@@ -83,7 +83,7 @@ And it does not stop there. The way this specification supports seat occupancy r
 
 # Conceptual Data Model
 
-![Conceptual Data Model](Conceptual-data-model.svg)
+![Conceptual Data Model](conceptual-data-model.svg)
 
 PASSENGER SPACEs, PASSENGER SPACE CAPACITY and PASSENGER ENTRANCE are all statically configured (they will not change during operation). 
 
