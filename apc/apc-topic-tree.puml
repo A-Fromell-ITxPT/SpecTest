@@ -1,0 +1,27 @@
+@startsalt
+skinparam backgroundColor white
+{
+{T
++ **topic** | **payload** | **retain** | **msg exp**
++ apc
+++ **entrancecounts**
++++ [Provider ID]
+++++ entrancecount 
++++++ [sensorId OR entranceId] | PASSENGER ENTRANCE COUNT | False? | ?
+++ **spacecounts**
++++ [Provider ID]
+++++ occupancycount 
++++++ [spaceId] | PASSENGER SPACE OCCUPANCY COUNT | False? | ?
+++++ entrancecount 
++++++ [spaceId] | PASSENGER SPACE ENTRANCE COUNT | False? | ?
+++ **vehicledefine**
++++ [Provider ID]
+++++ spacedefines
++++++ [spaceId] | PASSENGER SPACE | True | not set (inf)
+++++ sensorentrancemapping
++++++ [sensorId-entranceId] | sensorId-entranceId mapping | True | not set (inf)
+++++ entranceentrancemapping
++++++ [entranceId1-enctranceId2] | entranceId1-entranceId2 mapping | True | not set (inf)
+}
+}
+@endsalt

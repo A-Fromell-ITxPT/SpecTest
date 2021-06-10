@@ -1,0 +1,13 @@
+{
+    "$schema": "https://github.com/ITxPT/<something>/PASSENGER-SPACE.json",
+    // spaceId must be unique in the Vehicle
+    "spaceId": "rear-area",
+    // spaceType not a strict enum as custom values are allowed
+    "spaceType": "seating-area",
+    "entrances": [
+        {"entranceId": "startRearSeating", 
+            "entranceType": "INTERNAL", "direction": "ALIGED"}
+    ],
+    "isPartOfSpaces": [],
+    "containsSpaces": []
+}

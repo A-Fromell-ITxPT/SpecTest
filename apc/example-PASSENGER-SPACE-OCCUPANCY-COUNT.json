@@ -1,0 +1,8 @@
+{
+    "$schema": "https://github.com/ITxPT/<something>/PASSENGER-SPACE-OCCUPANCY-COUNT.json",
+    "spaceId": "VIN1234566HJ",
+    "occupancy": "<objectCount>",
+    "trigger": "PERIODIC",
+    "timestamp": "2021-06-09T07:33:48"
+    // Do we also want a msgSeqNbr ? 
+}

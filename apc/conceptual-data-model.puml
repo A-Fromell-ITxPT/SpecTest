@@ -1,0 +1,25 @@
+@startuml 
+skinparam backgroundColor white
+
+class "PASSENGER\nSPACE" as PS #line.bold;back:FFF176 
+class "PASSENGER\nENTRANCE" as PE #line.bold;back:FFF176
+class "PASSENGER\nSPACE CAPACITY" as PSC #line.bold;back:FFF176
+
+class "PASSENGER\nENTRANCE COUNT" as PEC
+together {
+
+class "PASSENGER SPACE\nENTRANCE COUNT" as PSEC
+class "PASSENGER SPACE\nOCCUPANCY COUNT" as PSOC
+}
+<> diamond
+PS "part-of 0..*" o-left- diamond
+PS "contain 0..*" o-left- diamond
+PS  -down-o "1..*" PE : to/from
+PS -up- "1" PSC
+
+PS -right-* "1" PSOC
+PS -right-* "1" PSEC
+
+
+PE -right-* "1" PEC
+@enduml

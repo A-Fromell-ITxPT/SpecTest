@@ -1,0 +1,7 @@
+{
+    "$schema": "https://github.com/ITxPT/<something>/ENTRANCE-FOR-PASSENGER-SPACE.json",
+    // entranceId must be unique in the Vehicle
+    "entranceId": "door2",
+    "entranceType": "EXTERNAL", 
+    "direction": "ALIGNED"
+}

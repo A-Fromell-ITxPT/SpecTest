@@ -1,0 +1,5 @@
+{
+    "$schema": "https://github.com/ITxPT/<something>/sensorId-entranceId-mapping.json",
+    "sensorId": "AcmeCo-23456789",
+    "entranceId": "car2397-door7"
+}

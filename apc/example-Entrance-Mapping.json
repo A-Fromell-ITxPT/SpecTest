@@ -1,0 +1,5 @@
+{
+    "$schema": "https://github.com/ITxPT/<something>/entranceId-mapping.json",
+    "entranceId1": "car1287-rearEntrance",
+    "entranceId2": "car2397-frontEntrance"
+}

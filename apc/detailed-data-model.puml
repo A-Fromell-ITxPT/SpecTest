@@ -1,0 +1,81 @@
+@startuml
+skinparam backgroundColor white
+
+class "PASSENGER\nSPACE" as PS #line.bold;back:FFF176 {
+    SpaceId : id
+    Enum SpaceType 
+    SpaceId [] : isPartOfSpaces
+    SpaceId [] : containsSpaces
+    EntranceRef [] : entrances
+}
+
+class "PASSENGER\nSPACE CAPACITY" as PSC #line.bold;back:FFF176 {
+    SpaceId : spaceId
+    ObjectCount : countAtCapacity
+}
+
+class "PASSENGER SPACE\nOCCUPANCY COUNT" as PSOC {
+    SpaceId : spaceId
+    ObjectCount : occupancy
+    CountTrigger : trigger
+    timestamp : now 
+}
+
+
+class "EntranceRef \nENTRANCE FOR PASSENGER SPACE " as EntranceRef #line.bold;back:FFF176 {
+    EntranceId : entranceId
+    Enum EntranceType : EXTERNAL|INTERNAL
+    Enum Direction : ALIGNED|REVERSED
+}
+
+class SensorEntranceMapping #line.bold;back:FFF176 {
+    EntranceId : entranceId
+    SensorId : sensorId
+}
+
+note "PASSENGER ENTRANCE COUNT must \ncontain _either_ a entranceId or a sensorId. \nIf it contains a sensorId a \nSensorEntranceMapping must be present. " as N
+
+PS::EntranceRef --* EntranceRef
+
+
+
+class "PASSENGER\nENTRANCE COUNT" as PEC {
+    EntranceId : entranceId
+    SensorId : sensorId
+    ObjectCount : entered
+    ObjectCount : exited
+    CountTrigger : trigger
+    timestamp : now 
+    timestamp : countStart
+}
+
+PEC .. N
+SensorEntranceMapping .. N
+
+
+class "PASSENGER SPACE\nENTRANCE COUNT" as PSEC {
+    SpaceId : spaceId
+    ObjectCount : entered
+    ObjectCount : exited
+    CountTrigger : trigger
+    timestamp : now 
+    timestamp : countStart
+}
+
+class EntranceMapping #line.bold;back:FFF176 {
+EntranceId : entranceId1
+EntranceId : entranceId2
+Enum Direction : ALIGNED|REVERSED
+}
+
+note bottom of EntranceMapping: Sets two entranceIds as being \nthe same physical entrance. 
+
+note top of EntranceMapping: This may be a \nCOUPLED PASSENGER ENTRANCE  
+
+'Some hacks to improve layout
+PS -[hidden]up- "1" PSC
+PEC -[hidden]u- EntranceRef
+PSOC -[hidden]u- PSEC
+PS -[hidden]r- EntranceMapping
+
+@enduml
