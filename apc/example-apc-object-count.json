@@ -1,5 +1,6 @@
 {
     "$schema": "https://github.com/ITxPT/<something>/apc-object-count.json",
+    "apiVersion": 1.0,
     "adults": {"count": 21},
     "children": {"count": 4},
     "wheelchairs": {"count": 0},

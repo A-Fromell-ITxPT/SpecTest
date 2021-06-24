@@ -1,0 +1,2 @@
+# A windows command below, so cannot be run via sh, but at least it is documented.
+py.exe .\exctract_concepts.py --output-file ..\..\SpecTest\apc\itxpt_concepts_apc.md --filter '..\..\SpecTest\apc\apc_concepts.json'

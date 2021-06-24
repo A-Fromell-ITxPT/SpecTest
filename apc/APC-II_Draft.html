@@ -88,75 +88,105 @@
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#concepts-and-terminology"><span class="toc-section-number">1</span> Concepts and Terminology</a>
+<li><a href="#modal-verbs-terminology"></a></li>
+<li><a href="#concepts-and-terminology">1. Concepts and Terminology</a>
 <ul>
-<li><a href="#itxpt-data-dictionary-concepts"><span class="toc-section-number">1.1</span> ITxPT Data Dictionary Concepts</a></li>
-<li><a href="#other-terminology"><span class="toc-section-number">1.2</span> Other Terminology</a></li>
+<li><a href="#itxpt-data-dictionary-concepts">1.1. ITxPT Data Dictionary Concepts</a></li>
+<li><a href="#other-terminology">1.2. Other Terminology</a></li>
 </ul></li>
-<li><a href="#apc-ii-solution-description"><span class="toc-section-number">2</span> APC-II Solution description</a>
+<li><a href="#apc-ii-solution-description">2. APC-II Solution description</a>
 <ul>
-<li><a href="#relation-to-itxpt-s02p07-apc-specification"><span class="toc-section-number">2.1</span> Relation to ITxPT S02P07 APC Specification</a></li>
-<li><a href="#purpose-of-apc"><span class="toc-section-number">2.2</span> Purpose of APC</a></li>
-<li><a href="#high-level-solution"><span class="toc-section-number">2.3</span> High Level solution</a></li>
-<li><a href="#what-is-not-standardized"><span class="toc-section-number">2.4</span> What is not standardized</a></li>
-<li><a href="#passenger-spaces"><span class="toc-section-number">2.5</span> PASSENGER SPACES</a></li>
+<li><a href="#relation-to-itxpt-s02p07-apc-specification">2.1. Relation to ITxPT S02P07 APC Specification</a></li>
+<li><a href="#purpose-of-apc">2.2. Purpose of APC</a></li>
+<li><a href="#high-level-solution">2.3. High Level solution</a></li>
+<li><a href="#what-is-not-standardized">2.4. What is not standardized</a></li>
+<li><a href="#passenger-spaces">2.5. PASSENGER SPACES</a></li>
 </ul></li>
-<li><a href="#conceptual-data-model"><span class="toc-section-number">3</span> Conceptual Data Model</a></li>
-<li><a href="#detailed-data-model"><span class="toc-section-number">4</span> Detailed Data Model</a>
+<li><a href="#conceptual-data-model">3. Conceptual Data Model</a></li>
+<li><a href="#detailed-data-model">4. Detailed Data Model</a>
 <ul>
-<li><a href="#uniqueness-of-ids"><span class="toc-section-number">4.1</span> Uniqueness of IDs</a></li>
-<li><a href="#entrances"><span class="toc-section-number">4.2</span> Entrances</a>
+<li><a href="#uniqueness-of-ids">4.1. Uniqueness of IDs</a></li>
+<li><a href="#entrances">4.2. Entrances</a>
 <ul>
-<li><a href="#external-entrances"><span class="toc-section-number">4.2.1</span> External entrances</a></li>
+<li><a href="#sensor-entrance-mapping">4.2.1. Sensor Entrance Mapping</a></li>
+<li><a href="#external-entrances">4.2.2. External entrances</a></li>
 </ul></li>
-<li><a href="#relations-of-spaces"><span class="toc-section-number">4.3</span> Relations of Spaces</a>
+<li><a href="#relations-of-spaces">4.3. Relations of Spaces</a>
 <ul>
-<li><a href="#entrance-entrance-mappings"><span class="toc-section-number">4.3.1</span> Entrance-Entrance Mappings</a></li>
+<li><a href="#entrance-entrance-mappings">4.3.1. Entrance-Entrance Mappings</a></li>
+<li><a href="#two-sensors-for-one-entrance">4.3.2. Two sensors for one Entrance</a></li>
 </ul></li>
-<li><a href="#no-spaces-defined"><span class="toc-section-number">4.4</span> No Spaces defined</a></li>
+<li><a href="#no-spaces-defined">4.4. No Spaces defined</a></li>
 </ul></li>
-<li><a href="#data-format-json"><span class="toc-section-number">5</span> Data Format JSON</a>
+<li><a href="#data-format-json">5. Data Format JSON</a>
 <ul>
-<li><a href="#apc-static-data"><span class="toc-section-number">5.1</span> APC Static Data</a>
+<li><a href="#api-version">API version</a></li>
+<li><a href="#apc-static-data">5.1. APC Static Data</a>
 <ul>
-<li><a href="#sensorid-to-entranceid-mapping"><span class="toc-section-number">5.1.1</span> SensorId to entranceId mapping</a></li>
-<li><a href="#passenger-space-capacity"><span class="toc-section-number">5.1.2</span> PASSENGER SPACE CAPACITY</a></li>
-<li><a href="#passenger-space"><span class="toc-section-number">5.1.3</span> PASSENGER SPACE</a></li>
-<li><a href="#entrance-for-passenger-space"><span class="toc-section-number">5.1.4</span> ENTRANCE FOR PASSENGER SPACE</a></li>
-<li><a href="#entrance-mapping"><span class="toc-section-number">5.1.5</span> Entrance Mapping</a></li>
+<li><a href="#sensorid-to-entranceid-mapping">5.1.1. SensorId to entranceId mapping</a></li>
+<li><a href="#passenger-space-capacity">5.1.2. PASSENGER SPACE CAPACITY</a></li>
+<li><a href="#passenger-space">5.1.3. PASSENGER SPACE</a></li>
+<li><a href="#entrance-for-passenger-space">5.1.4. ENTRANCE FOR PASSENGER SPACE</a></li>
+<li><a href="#entrance-mapping">5.1.5. Entrance Mapping</a></li>
 </ul></li>
-<li><a href="#apc-counting-data"><span class="toc-section-number">5.2</span> APC Counting Data</a>
+<li><a href="#apc-counting-data">5.2. APC Counting Data</a>
 <ul>
-<li><a href="#time-synchronization"><span class="toc-section-number">5.2.1</span> Time synchronization</a></li>
-<li><a href="#apc-objectcount-structure"><span class="toc-section-number">5.2.2</span> APC objectCount structure</a></li>
-<li><a href="#passenger-entrance-count"><span class="toc-section-number">5.2.3</span> PASSENGER ENTRANCE COUNT</a></li>
-<li><a href="#passenger-count-triggers"><span class="toc-section-number">5.2.4</span> Passenger Count Triggers</a></li>
-<li><a href="#passenger-space-occupancy-count"><span class="toc-section-number">5.2.5</span> PASSENGER SPACE OCCUPANCY COUNT</a></li>
-<li><a href="#passenger-space-entrance-count"><span class="toc-section-number">5.2.6</span> PASSENGER SPACE ENTRANCE COUNT</a></li>
+<li><a href="#time-synchronization">5.2.1. Time synchronization</a></li>
+<li><a href="#quality-factor">Quality Factor</a></li>
+<li><a href="#apc-objectcount-structure">5.2.2. APC objectCount structure</a></li>
+<li><a href="#passenger-entrance-count">5.2.3. PASSENGER ENTRANCE COUNT</a></li>
+<li><a href="#passenger-count-triggers">5.2.4. Passenger Count Triggers</a></li>
+<li><a href="#passenger-space-occupancy-count">5.2.5. PASSENGER SPACE OCCUPANCY COUNT</a></li>
+<li><a href="#passenger-space-entrance-count">5.2.6. PASSENGER SPACE ENTRANCE COUNT</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#transport-mqtt-using-json-format"><span class="toc-section-number">6</span> Transport MQTT using JSON format</a>
+<li><a href="#transport-mqtt-using-json-format">6. Transport MQTT using JSON format</a>
 <ul>
-<li><a href="#general-requirements"><span class="toc-section-number">6.1</span> General Requirements</a></li>
-<li><a href="#security-considerations"><span class="toc-section-number">6.2</span> Security Considerations</a></li>
-<li><a href="#performance-considerations"><span class="toc-section-number">6.3</span> Performance Considerations</a></li>
-<li><a href="#functional-group-and-provider-names"><span class="toc-section-number">6.4</span> Functional Group and Provider Names</a></li>
-<li><a href="#mqtt-apc-topic-tree"><span class="toc-section-number">6.5</span> MQTT APC Topic tree</a></li>
-<li><a href="#entrancecounts-providers"><span class="toc-section-number">6.6</span> <code>entrancecounts</code> Providers</a>
+<li><a href="#general-requirements">6.1. General Requirements</a></li>
+<li><a href="#security-considerations">6.2. Security Considerations</a></li>
+<li><a href="#performance-considerations">6.3. Performance Considerations</a></li>
+<li><a href="#functional-group-and-provider-names">6.4. Functional Group and Provider Names</a></li>
+<li><a href="#mqtt-apc-topic-tree">6.5. MQTT APC Topic tree</a></li>
+<li><a href="#entrancecounts-providers">6.6. <code>entrancecounts</code> Providers</a>
 <ul>
-<li><a href="#inventory"><span class="toc-section-number">6.6.1</span> Inventory</a></li>
+<li><a href="#inventory">6.6.1. Inventory</a></li>
 </ul></li>
-<li><a href="#spacecounts-providers"><span class="toc-section-number">6.7</span> <code>spacecounts</code> Providers</a>
+<li><a href="#spacecounts-providers">6.7. <code>spacecounts</code> Providers</a>
 <ul>
-<li><a href="#inventory-1"><span class="toc-section-number">6.7.1</span> Inventory</a></li>
+<li><a href="#inventory-1">6.7.1. Inventory</a></li>
 </ul></li>
-<li><a href="#vehicledefine-providers"><span class="toc-section-number">6.8</span> <code>vehicledefine</code> Providers</a>
+<li><a href="#vehicledefine-providers">6.8. <code>vehicledefine</code> Providers</a>
 <ul>
-<li><a href="#inventory-2"><span class="toc-section-number">6.8.1</span> Inventory</a></li>
+<li><a href="#inventory-2">6.8.1. Inventory</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </nav>
+<p><strong>Version History</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Version</th>
+<th>Description</th>
+<th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>early June 2021</td>
+<td>0.1.0</td>
+<td>Initial TWG draft</td>
+<td>OAB</td>
+</tr>
+<tr class="even">
+<td>2021-06-24</td>
+<td>0.2.0</td>
+<td>Updates after first walk through</td>
+<td>OAB</td>
+</tr>
+</tbody>
+</table>
 <table style="width:99%;">
 <colgroup>
 <col style="width: 98%" />
@@ -186,24 +216,172 @@ Tel +32 (0)2 673 61 00 | Fax +32 (0)2 660 10 72<br />
 <p>Users of the present document should be aware that the document may be subject to revision or change of status. Information on the current status of this and other ITxPT documents is available at <a href="https://itxptorg.sharepoint.com/sites/ITxPTTeam/Shared%20Documents/Specifications/2.%20Next%20release/2020%20v2.1.1/S02/Part04-%20FMStoIP/wiki.txpt.org">wiki.txpt.org</a></p>
 <p>© ITxPT 2021<br />
 All rights reserved.</p>
-<h1 data-number="1" id="concepts-and-terminology"><span class="header-section-number">1</span> Concepts and Terminology</h1>
-<h2 data-number="1.1" id="itxpt-data-dictionary-concepts"><span class="header-section-number">1.1</span> ITxPT Data Dictionary Concepts</h2>
+<h1 class="ListParagraph" id="modal-verbs-terminology"></h1>
+<p>In the present document "<strong>shall</strong>", "<strong>shall not</strong>", "<strong>should</strong>", "<strong>should not</strong>", "<strong>may</strong>", "<strong>need not</strong>", "<strong>will"</strong>, <strong>"will not"</strong>, "<strong>can</strong>" and "<strong>cannot</strong>" are to be interpreted as described below.</p>
+<p>"<strong>must</strong>" and "<strong>must not</strong>" are <strong>NOT</strong> allowed in ITxPT deliverables except when used in direct citation.</p>
+<p>In order to be able to claim compliance with an ITXPT deliverable, the user needs to be able to identify the requirements that are obligatory. The user also needs to be able to distinguish these requirements from other provisions where there is a certain freedom of choice.</p>
+<p>This clause is clearly stating the verbal form that shall be used to express a particular kind of provision, i.e. a requirement, a recommendation or a permission.</p>
+<p>In the first column of tables T1 to T4 the verbal form that shall be used to express each kind of provision is given. The equivalent expressions given in the second column may be used only in exceptional cases when the form given in the first column cannot be used for linguistic reasons</p>
+<p>NOTE: Only singular forms are shown.</p>
+<p>The verbal forms shown in Table T1 shall be used to indicate <strong>requirements</strong> strictly to be followed in order to conform to the standard and from which no deviation is permitted. For example, the requirements to be followed may relate to values, actions, features to be supported and/or used or presence/absence or optional elements.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Verbal form</th>
+<th>Equivalent expressions used in exceptional cases[^1]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>shall</strong></td>
+<td><p>is to</p>
+<p>is required to</p>
+<p>it is required that</p>
+<p>has to</p>
+<p>only ... is permitted</p>
+<p>it is necessary</p></td>
+</tr>
+<tr class="even">
+<td><strong>shall not</strong></td>
+<td><p>is not allowed [permitted] [acceptable] [permissible]</p>
+<p>is required to be not</p>
+<p>is required that ... be not</p>
+<p>is not to be</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table T1 - Requirement</p>
+<p>The verbal forms shown in Table T2 shall be used to indicate that among several possibilities one is <strong>recommended</strong> as particularly suitable, without mentioning or excluding others, or that a certain course of action is preferred but not necessarily required, or that (in the negative form) a certain possibility or course of action is deprecated but not prohibited. For example, the recommendations may relate to values, actions, features to be supported and/or used or presence/absence or optional elements.</p>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Verbal form</th>
+<th>Equivalent expressions used in exceptional cases<sup>1</sup></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>should</strong></td>
+<td><p>it is recommended that</p>
+<p>ought to</p></td>
+</tr>
+<tr class="even">
+<td><strong>should not</strong></td>
+<td><p>should not it is not recommended that</p>
+<p>ought not to</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table T2 - Recommendation</p>
+<p>The verbal forms shown in Table T3 shall be used to indicate what is <strong>permitted</strong> by the ITXPT deliverable, which can be values, actions, support and /or use of features or presence/absence of optional elements.</p>
+<table style="width:94%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Verbal form</th>
+<th>Equivalent expressions used in exceptional cases<sup>1</sup></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>may</strong></td>
+<td><p>is permitted</p>
+<p>is allowed</p>
+<p>is permissible</p></td>
+</tr>
+<tr class="even">
+<td><strong>may not</strong></td>
+<td><p>it is not required that</p>
+<p>no ... is required</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table T3 - Permission</p>
+<p>The verbal forms shown in Table T4 shall be used for statements of <strong>possibility and capability</strong>, whether material, physical or causal.</p>
+<table style="width:94%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Verbal form</th>
+<th>Equivalent expressions used in exceptional cases<sup>1</sup></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>can</strong></td>
+<td><p>be able to</p>
+<p>there is a possibility of</p>
+<p>it is possible to</p></td>
+</tr>
+<tr class="even">
+<td><strong>cannot</strong></td>
+<td><p>be unable to</p>
+<p>there is no possibility of</p>
+<p>it is not possible to</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table T4 - Possibility and capability</p>
+<p>The verbal forms shown in Table T5 shall be used to indicate <strong>behaviour</strong> of equipment or sub-systems <strong>outside</strong> the scope of the ITXPT deliverable in which they appear. For example, in an ITXPT deliverable specifying the requirements of terminal equipment, these forms shall be used to describe the expected behaviour of the network to which the terminal is connected.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Verbal form</th>
+<th style="text-align: left;">Equivalent expressions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>will</strong></td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>will not</strong></td>
+<td style="text-align: left;">-</td>
+</tr>
+</tbody>
+</table>
+<p>Table T5 - Inevitability</p>
+<h1 id="concepts-and-terminology">1. Concepts and Terminology</h1>
+<h2 id="itxpt-data-dictionary-concepts">1.1. ITxPT Data Dictionary Concepts</h2>
 <p>Concepts from the ITxPT Data Dictionary is referred by UPPER CASE, when the concept definition is important.</p>
 <p>The following Concepts from the ITxPT Data Dictionary are used.</p>
 <p><strong>COMPOUND TRAIN</strong> - A VEHICLE TYPE composed of a sequence of more than one vehicles of the type TRAIN.</p>
+<p><strong>ENTRANCE FOR PASSENGER SPACE</strong> - A PASSENGER ENTRANCE used as an entry- and/or exit- point to or from a certain PASSENGER SPACE along with information if the designated exit and entry directions of the PASSENGER ENTRANCE are aligned or reversed in relation to the PASSENGER SPACE.</p>
+<p><strong>PASSENGER ENTRANCE</strong> - A physical or virtual boundary point through which passengers can enter or exit, e.g. a vehicle door. A PASSENGER ENTRANCE has a designated enter-direction and a designated exit-direction.</p>
+<p><strong>PASSENGER ENTRANCE COUNT</strong> - Number of passengers and other objects that have entered and exited through a specific PASSENGER ENTRANCE during a time span or since some implicit or explicit previous time/event. A possible implementation of LOGGABLE OBJECT.</p>
+<p><strong>PASSENGER SPACE</strong> - A passenger area within a VEHICLE. It may be limited to only a part of a VEHICLE such as a TRAIN ELEMENT, upper deck/lower deck, first class compartment or a bounded open space. A PASSENGER SPACE can be part of, overlap with, and be made up of other PASSENGER SPACEs.</p>
+<p><strong>PASSENGER SPACE CAPACITY</strong> - The number of passengers and other objects that are present in a PASSENGER SPACE when it is at 100% capacity.</p>
+<p><strong>PASSENGER SPACE ENTRANCE COUNT</strong> - Number of passengers and other objects that entered and exited a specific PASSENGER SPACE during a time span or since some implicit or explicit previous time/event. A possible implementation of LOGGABLE OBJECT. It is in essence an aggregation of relevant PASSENGER ENTRANCE COUNTs according to ENTRANCE FOR PASSENGER SPACE information.</p>
+<p><strong>PASSENGER SPACE OCCUPANCY COUNT</strong> - Number of passengers and other objects that are in a PASSENGER SPACE at a given time. A possible implementation of LOGGABLE OBJECT.</p>
 <p><strong>TRAIN</strong> - A VEHICLE TYPE composed of TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons.</p>
 <p><strong>TRAIN ELEMENT</strong> - An elementary component of a TRAIN (e.g. wagon, locomotive).</p>
-<h2 data-number="1.2" id="other-terminology"><span class="header-section-number">1.2</span> Other Terminology</h2>
+<p><strong>VEHICLE</strong> - A public transport vehicle used for carrying passengers.</p>
+<h2 id="other-terminology">1.2. Other Terminology</h2>
 <p>In addition the following terminology is used in the specification.</p>
 <p><strong>APC:</strong> Automatic Passenger Counting</p>
 <p><strong>APC Aggregator:</strong> A component/module/process/etc that generates APC data based on inputs.</p>
-<h1 data-number="2" id="apc-ii-solution-description"><span class="header-section-number">2</span> APC-II Solution description</h1>
-<h2 data-number="2.1" id="relation-to-itxpt-s02p07-apc-specification"><span class="header-section-number">2.1</span> Relation to ITxPT S02P07 APC Specification</h2>
+<h1 id="apc-ii-solution-description">2. APC-II Solution description</h1>
+<h2 id="relation-to-itxpt-s02p07-apc-specification">2.1. Relation to ITxPT S02P07 APC Specification</h2>
 <p>The specification is broadly similar to S02P07, and in some aspects <em>very</em> similar. However it also changes a number of things: - Modified data structures to support Heavy Rail - Changed data format to JSON - Changed Transport to MQTT</p>
 <p>As such the old specification have been kept as a Legacy specification to support existing equipment and consumers, and this specification has been introduced as a new specification, APC-II</p>
-<h2 data-number="2.2" id="purpose-of-apc"><span class="header-section-number">2.2</span> Purpose of APC</h2>
+<h2 id="purpose-of-apc">2.2. Purpose of APC</h2>
 <p>Put some purpose here</p>
-<h2 data-number="2.3" id="high-level-solution"><span class="header-section-number">2.3</span> High Level solution</h2>
+<h2 id="high-level-solution">2.3. High Level solution</h2>
 <p>The APC specification specifies a few different things: - The information from Entrance (Door) Sensors - The information aggregated from Sensors (of any type) for PASSENGER SPACES - How to express how Entrances relates to Spaces, and Spaces to other Spaces.</p>
 <p>The specification specifies the Data being exchanged, not where or how the Data is being processed or generated. In particular it does not contain any requirements on what is done onboard and what is done in the back office.</p>
 <figure>
@@ -215,9 +393,9 @@ All rights reserved.</p>
 <img src="highlevel_video-axle.svg" alt="Image Caption" /><figcaption aria-hidden="true">Image Caption</figcaption>
 </figure>
 <p>Many other configurations are possible.</p>
-<h2 data-number="2.4" id="what-is-not-standardized"><span class="header-section-number">2.4</span> What is not standardized</h2>
+<h2 id="what-is-not-standardized">2.4. What is not standardized</h2>
 <p>Currently the specification only standardizes the data from Entrance (Door) sensors, not e.g. Axel Load sensors. And it does not standardize any reports, e.g. Entry/exit per STOP PLACE.</p>
-<h2 data-number="2.5" id="passenger-spaces"><span class="header-section-number">2.5</span> PASSENGER SPACES</h2>
+<h2 id="passenger-spaces">2.5. PASSENGER SPACES</h2>
 <p>PASSENGER SPACES will be described more formally below. But as it the major addition compared to the S02P07 APC Specification, and the key concept to support Heavy Rail Requirements, a bit of less formal explanation is added here to aid the readability of the specification.</p>
 <p>The simplest configuration is a Vehicle with one Space for the entire vehicle, and one or more Entrances:</p>
 <figure>
@@ -231,20 +409,12 @@ All rights reserved.</p>
 </figure>
 <p>In this three carriage EMU there is a Space for the entire Vehicle, one Space for each of the three Carriages, and then one of the Carriages is further divided in a 1st-Class Space and an Economy-Class Space. Here are also the Entrances marked, both the external entrances (red, into/out of the Vehicle) and the internal entrances (blue, between Spaces).</p>
 <p>And it does not stop there. The way this specification supports seat occupancy reporting is by defining a Space for each seat, and reporting the Occupancy on that.</p>
-<h1 data-number="3" id="conceptual-data-model"><span class="header-section-number">3</span> Conceptual Data Model</h1>
+<h1 id="conceptual-data-model">3. Conceptual Data Model</h1>
 <figure>
 <img src="conceptual-data-model.svg" alt="Conceptual Data Model" /><figcaption aria-hidden="true">Conceptual Data Model</figcaption>
 </figure>
-<p>PASSENGER SPACEs, PASSENGER SPACE CAPACITY and PASSENGER ENTRANCE are all statically configured (they will not change during operation).</p>
-<blockquote>
-<p><strong><em>NOTE:</em></strong> I added some additional text below, but it is mostly restating what is in the Concept Definitions, so I think it should be deleted.</p>
-</blockquote>
-<p>A PASSENGER SPACE can both be part of another PASSENGER SPACE and contain other PASSENGER SPACES.</p>
-<p>A PASSENGER SPACE must have at least one PASSENGER ENTRANCE. If it didn’t no one could enter it!</p>
-<p>A PASSENGER ENTRANCE COUNT is the number of PASSENGERS (and other objects) that have passed through the Entrance for some defined duration.</p>
-<p>A PASSENGER SPACE OCCUPANCY COUNT is the number of PASSENGERS (and other objects) that are present in the PASSENGER SPACE at some defined point in time.</p>
-<p>A PASSENGER SPACE ENTRANCE COUNT is the number of PASSENGERS (and other objects) that have entered and exited a PASSENGER SPACE.</p>
-<h1 data-number="4" id="detailed-data-model"><span class="header-section-number">4</span> Detailed Data Model</h1>
+<p>PASSENGER SPACE, PASSENGER SPACE CAPACITY and PASSENGER ENTRANCE are all statically configured (they will not change during operation) and are shown in darker yellow. PASSENGER ENTRANCE COUNT, PASSENGER SPACE ENTRANCE COUNT, and PASSENGER SPACE OCCUPANCY COUNT all contain passenger count data and will change regularly during operation and are shown in ligher yellow.</p>
+<h1 id="detailed-data-model">4. Detailed Data Model</h1>
 <p>The Conceptual Data Model above shows how the defined Concepts relates to each other. But it does not provide enough details to be the basis of a transmission format.</p>
 <p>To do that additional details are provided.</p>
 <figure>
@@ -252,114 +422,131 @@ All rights reserved.</p>
 </figure>
 <p>A number of things have changed. Relationships between different objects are now set by spaceId and entranceId.</p>
 <p>PASSENGER ENTRANCE is not present as a separate class, as it did not carry any information that needed stand-alone representation.</p>
-<p>A SensorEntranceMapping class have been introduced. This allows the sensors to not know their entranceId, as long as another actor supplies that.</p>
-<h2 data-number="4.1" id="uniqueness-of-ids"><span class="header-section-number">4.1</span> Uniqueness of IDs</h2>
+<h2 id="uniqueness-of-ids">4.1. Uniqueness of IDs</h2>
 <p>There is no namespaces for Space, Entrance and Sensor IDs. All IDs must be unique within the Vehicle it is used.</p>
 <p>It is <em>strongly</em> recommended that all sensor IDs be globally unique, so that one sensor can never be mistaken for another.</p>
 <p>The uniqueness of entrance and sensor IDs is not a problem for Vehicles that are fixed, e.g. a bus. In these Vehicles entrance IDs can be be “door1” and “door2”, space IDs “forward”, “middle”, and “rear” or something else simple.</p>
 <p>But in a Vehicle made up of potentially interchangeable elements, typically a TRAIN made up of TRAIN ELEMENTS, it needs to be ensured that entrance and space IDs are unique regardless of which TRAIN ELEMENTS make up the the TRAIN.</p>
 <p>It must either be ensured that the IDs are unique for all the possible combinations of TRAIN ELEMENTS, <em>or</em> each TRAIN must set (new) unique entrance and space IDs each time the makeup of the TRAIN changes.</p>
-<h2 data-number="4.2" id="entrances"><span class="header-section-number">4.2</span> Entrances</h2>
+<h2 id="entrances">4.2. Entrances</h2>
 <p>One Entrance may belong to multiple Spaces. E.g. an external entrance, Door7, may belong to the Vehicle Space, to the Carriage1 Space, and to the Carriage1-SilentCompartment Space. When one passenger enters through Door7 this is only one new passenger in the Vehicle, one new passenger in Carriage1 and one new passenger in Carriage1-SilentCompartment.</p>
-<h3 data-number="4.2.1" id="external-entrances"><span class="header-section-number">4.2.1</span> External entrances</h3>
+<h3 id="sensor-entrance-mapping">4.2.1. Sensor Entrance Mapping</h3>
+<p>The SensorEntranceMapping entity allows the sensors to not know their entranceId, as long as another actor supplies that. It also make it possible to have two, or more, sensors for one entrance, e.g. a left and right sensor for a wide entrance.</p>
+<h3 id="external-entrances">4.2.2. External entrances</h3>
 <p>An entrance of type EXTERNAL by definition leads into/out-of the Vehicle. Because of this the Vehicle Space does not <em>need to</em> contain any external entrances. Instead these can be found by looking that the Spaces that the Vehicle Space contains. E.g. for a three car train, the Vehicle Space may have an empty entrances list, while the external doors found in the car1, car2 and car3 Spaces’ entrance lists.</p>
-<h2 data-number="4.3" id="relations-of-spaces"><span class="header-section-number">4.3</span> Relations of Spaces</h2>
+<h2 id="relations-of-spaces">4.3. Relations of Spaces</h2>
 <p>Each Space that is not a Vehicle Space will be next to one or more other spaces. Currently Spaces have no direct relations to each other. Which spaces connects to which other spaces must be determined by looking at the entrances each space have. Two spaces that contain the same entrance connect to each other.</p>
 <p>If the entrances are ALIGNED, then on entry a PASSENGER will be present in both Spaces. If the entrances are REVERSED, then a PASSENGER will enter one Space while exiting the others.</p>
 <blockquote>
-<p><strong><em>NOTE:</em></strong> While not rocket science, the potential structure of Spaces could grow fairly complex. In ITxPT Labelling should we have different levels of supported complexity?</p>
+<p><strong><em>SPEC QUESTION:</em></strong> While not rocket science, the potential structure of Spaces could grow fairly complex. In ITxPT Labelling should we have different levels of supported complexity?</p>
 </blockquote>
-<h3 data-number="4.3.1" id="entrance-entrance-mappings"><span class="header-section-number">4.3.1</span> Entrance-Entrance Mappings</h3>
+<h3 id="entrance-entrance-mappings">4.3.1. Entrance-Entrance Mappings</h3>
 <p>In cases where two spaces are next to each other, but <em>don’t</em> have the same entrance ID on what is the passage between them, this is resolved by and Entrance-Entrance Mapping. This will then be used to determine that e.g. the entrance “car123-rear” for space “car123” is now connected to the entrance “car345-front” for space “car345”. Now a car123-rear exit will be a car345-front entry, and vice versa.</p>
 <p>A mapped entrance could have one Entrance Sensor, so that a PASSENGER ENTRANCE COUNT will be generated with one of the entrance IDs, but not the other. Or there could be a sensor for each of them, so that for each PASSENGER entry/exit there will be a PASSENGER ENTRANCE COUNT generated with each of the entrance IDs. The APC Aggregator needs to account for this, and handle both possibilities.</p>
 <blockquote>
-<p><strong><em>NOTE:</em></strong> This concept seemed great on paper. But thinking about the implementation it may be surprisingly complex to handle that there could be one or two sensors without knowing which is the case. Should we add to EntranceRef if the Entrance have a Entrance Sensor or not?</p>
+<p><strong><em>SPEC QUESTION:</em></strong> This concept seemed great on paper. But thinking about the implementation it may be surprisingly complex to handle that there could be one or two sensors without knowing which is the case. Should we add to EntranceRef if the Entrance have a Entrance Sensor or not?</p>
 </blockquote>
-<h2 data-number="4.4" id="no-spaces-defined"><span class="header-section-number">4.4</span> No Spaces defined</h2>
+<h3 id="two-sensors-for-one-entrance">4.3.2. Two sensors for one Entrance</h3>
+<p>In some cases there may be two independent sensors for one PASSENGER ENTRANCE. E.g. there may be both a door sensor <em>and</em> a video based system monitoring system, both reporting entry/exit data on the same physical entrance. In these cases the two systems needs to report entrance data using <em>different</em> entrance Ids, and then an Entrance-Entrance Mapping is used to define that these sensors are covering the same PASSENGER ENTRANCE.</p>
+<h2 id="no-spaces-defined">4.4. No Spaces defined</h2>
 <p>If there are NO Spaces defined for a Vehicle, it shall be assumed that it is a single Space Vehicle. All PASSENGER ENTRANCE COUNT data items should be assumed to be EXTERNAL and PASSENGER SPACE OCCUPANCY COUNT, PASSENGER SPACE ENTRANCE COUNT, etc generated accordingly.</p>
 <p>Since a single Space is assumed, both sensor ID and entrance ID shall be accepted as identification of a PASSENGER ENTRANCE COUNT data item, without a need for a SensorEntranceMapping.</p>
 <blockquote>
-<p><strong><em>NOTE:</em></strong> This is added to simplify the single-space vehicle/bus case, which does not gain anything by having a Space defined(?) OTOH defining a Space is not hard, and removes this special case. Lets discuss.</p>
+<p><strong><em>SPEC QUESTION:</em></strong> This is added to simplify the single-space vehicle/bus case, which does not gain anything by having a Space defined(?) OTOH defining a Space is not hard, and removes this special case. Lets discuss.</p>
 </blockquote>
-<h1 data-number="5" id="data-format-json"><span class="header-section-number">5</span> Data Format JSON</h1>
+<h1 id="data-format-json">5. Data Format JSON</h1>
 <p>The Data Format for APC-II is JSON. As this is a Data Centric specification more formats could be added in future, but no such needs have been identified for now.</p>
 <p>The Data Format JSON section is organized in two sections. First is the static data that provides the information about how the Vehicle is “organized”, and then is the data that contains the Passenger Counts themselves.</p>
 <p>For brevity the JSON schemas are not included in this document, but can be found on the ITxPT github. For APC-II the schemas are regarded as part of the specification with no distinction in priority. If a conflict or contradiction is found between the schemas and this document an issue should be raised with ITxPT, which will resolve the problem with a minimum impact.</p>
-<h2 data-number="5.1" id="apc-static-data"><span class="header-section-number">5.1</span> APC Static Data</h2>
+<h2 id="api-version">API version</h2>
+<p>The property <code>apiVersion</code> is used to track the current version of the data. This is <em>not</em> the ITxPT specification version, which may change without the data being affected.</p>
+<blockquote>
+<p><strong><em>NOTE OAB:</em></strong> <code>apiVersion</code> a good candidate for more general standardization, perhaps as a Data Dictionary standard type.</p>
+</blockquote>
+<h2 id="apc-static-data">5.1. APC Static Data</h2>
 <p>Static Data describes how the Vehicle is configured. It should change only when the vehicle is reconfigured, which should be never for many Vehicles and seldom for the others. In particular the static data will not change during operation. The exception to this could be COMPOUND TRAINs, but even there each TRAIN would stay fixed.</p>
-<h3 data-number="5.1.1" id="sensorid-to-entranceid-mapping"><span class="header-section-number">5.1.1</span> SensorId to entranceId mapping</h3>
+<h3 id="sensorid-to-entranceid-mapping">5.1.1. SensorId to entranceId mapping</h3>
 <p>For Entrance Sensors that identify with the sensorId, a mapping of the sensorId to entranceId must be provided.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/sensorId-entranceId-mapping.json&quot;</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;sensorId&quot;</span><span class="fu">:</span> <span class="st">&quot;AcmeCo-23456789&quot;</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;car2397-door7&quot;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-<p>This is used by the APC Aggregator to know that a PASSENGER ENTRANCE COUNT data item with a sensorId belongs to specific entranceId. While this could be posted by anyone, the use case is that sensors don’t (need to) know where they are in the Vehicle, but this is known to some other onboard or back office system.</p>
-<h3 data-number="5.1.2" id="passenger-space-capacity"><span class="header-section-number">5.1.2</span> PASSENGER SPACE CAPACITY</h3>
-<p>This is the number of Objects that the Vehicle can accommodate at 100% utilization.</p>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;sensorId&quot;</span><span class="fu">:</span> <span class="st">&quot;AcmeCo-23456789&quot;</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;car2397-door7&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>This is used by the APC Aggregator to know that a PASSENGER ENTRANCE COUNT data item with a sensorId(s) belong to a specific entranceId. While this could be posted by anyone, the use case is that sensors don’t (need to) know where they are in the Vehicle, but this is known to some other onboard or back office system.</p>
+<h3 id="passenger-space-capacity">5.1.2. PASSENGER SPACE CAPACITY</h3>
+<p>This is the number of Objects that a Space (Vehicle) can accommodate at 100% utilization.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/PASSENGER-SPACE-CAPACITY.json&quot;</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;Vehicle&quot;</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;objectCount&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;see objectCount def&gt;&quot;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;Vehicle&quot;</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;capacity&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;see objectCount def&gt;&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>This structure contains the maximum number of <em>each</em> objects the Space can accommodate at at 100% utilization. E.g. a Space that can fit 90 adults, 120 children, 2 wheelchairs, and 4 prams, cannot fit these <em>at the same time</em> but would have a 100% occupancy at 60 adults, 25 children, 1 wheelchair and 2 prams.</p>
 <blockquote>
-<p><strong><em>SPEC QUESTION:</em></strong> Is this always in number of Adults, and then any Capacity calculation will need to account for the fact that one wheel chair or pram takes up more space than one Adult? If it always in Adults, perhaps having an <code>adults</code> property would be better than having a full objectCount structure. Or is it always the max number of things? If so a priority needs to be established, because while a Space could fit 3 wheelchairs or 4 prams, it cannot fit 3 wheelchairs <em>and</em> 4 prams. Perhaps wheelchairs are a bit of a special case, so perhaps this should be “number of wheelchair spaces and number of adults when wheelchair spaces are occupied”?</p>
+<p><strong><em>SPEC QUESTION:</em></strong> <strong>This is now resolved in text above?</strong> <em>Previous question:</em> Is this always in number of Adults, and then any Capacity calculation will need to account for the fact that one wheel chair or pram takes up more space than one Adult? If it always in Adults, perhaps having an <code>adults</code> property would be better than having a full objectCount structure. Or is it always the max number of things? If so a priority needs to be established, because while a Space could fit 3 wheelchairs or 4 prams, it cannot fit 3 wheelchairs <em>and</em> 4 prams. Perhaps wheelchairs are a bit of a special case, so perhaps this should be “number of wheelchair spaces and number of adults when wheelchair spaces are occupied”?</p>
 </blockquote>
-<h3 data-number="5.1.3" id="passenger-space"><span class="header-section-number">5.1.3</span> PASSENGER SPACE</h3>
+<blockquote>
+<p><strong><em>SPEC QUESTION:</em></strong> Should there be separate “seated” and “standing” capacity structures? This is always (?) known, so should be no extra effort to have that, and could potentially benefit systems that want to make judgments about current occupancy levels without knowing anything about the specific space/vehicle? E.g. instead of / in addition to “capacity” also have “seatedCapacity” and “standingCapacity”?</p>
+</blockquote>
+<h3 id="passenger-space">5.1.3. PASSENGER SPACE</h3>
 <p>The space structures is what APC count structures can be reported on.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/PASSENGER-SPACE.json&quot;</span><span class="fu">,</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceId</span> <span class="er">must</span> <span class="er">be</span> <span class="er">unique</span> <span class="er">in</span> <span class="er">the</span> <span class="er">Vehicle</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;VIN1234567HG&quot;</span><span class="fu">,</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceType</span> <span class="er">not</span> <span class="er">a</span> <span class="er">strict</span> <span class="er">enum</span> <span class="er">as</span> <span class="er">custom</span> <span class="er">values</span> <span class="er">are</span> <span class="er">allowed</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceType&quot;</span><span class="fu">:</span> <span class="st">&quot;VEHICLE&quot;</span><span class="fu">,</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entrances&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door1&quot;</span><span class="fu">,</span> <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span> <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span><span class="fu">}</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Usually</span> <span class="er">one</span> <span class="er">of</span> <span class="er">isPartOfSpaces</span> <span class="er">and</span> <span class="er">containsSpaces</span> <span class="er">are</span> <span class="er">used</span><span class="fu">,</span> <span class="er">not</span> <span class="er">both</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;isPartOfSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;containsSpaces&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;forward&quot;</span><span class="ot">,</span> <span class="st">&quot;mid-door-area&quot;</span><span class="ot">,</span> <span class="st">&quot;rear&quot;</span><span class="ot">]</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceId</span> <span class="er">must</span> <span class="er">be</span> <span class="er">unique</span> <span class="er">in</span> <span class="er">the</span> <span class="er">Vehicle</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;VIN1234567HG&quot;</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceType</span> <span class="er">not</span> <span class="er">a</span> <span class="er">strict</span> <span class="er">enum</span> <span class="er">as</span> <span class="er">custom</span> <span class="er">values</span> <span class="er">are</span> <span class="er">allowed</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceType&quot;</span><span class="fu">:</span> <span class="st">&quot;VEHICLE&quot;</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entrances&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door1&quot;</span><span class="fu">,</span> <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span> <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span><span class="fu">}</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Usually</span> <span class="er">one</span> <span class="er">of</span> <span class="er">isPartOfSpaces</span> <span class="er">and</span> <span class="er">containsSpaces</span> <span class="er">are</span> <span class="er">used</span><span class="fu">,</span> <span class="er">not</span> <span class="er">both</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;isPartOfSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;containsSpaces&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;forward&quot;</span><span class="ot">,</span> <span class="st">&quot;mid-door-area&quot;</span><span class="ot">,</span> <span class="st">&quot;rear&quot;</span><span class="ot">]</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>Above is a Vehicle Space with three sub-spaces with two of these sub-spaces below</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/PASSENGER-SPACE.json&quot;</span><span class="fu">,</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceId</span> <span class="er">must</span> <span class="er">be</span> <span class="er">unique</span> <span class="er">in</span> <span class="er">the</span> <span class="er">Vehicle</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;mid-door-area&quot;</span><span class="fu">,</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceType</span> <span class="er">not</span> <span class="er">a</span> <span class="er">strict</span> <span class="er">enum</span> <span class="er">as</span> <span class="er">custom</span> <span class="er">values</span> <span class="er">are</span> <span class="er">allowed</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceType&quot;</span><span class="fu">:</span> <span class="st">&quot;wheelchair-standing-area&quot;</span><span class="fu">,</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entrances&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span> </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;endForwardSeating&quot;</span><span class="fu">,</span> </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;REVERSED&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;startRearSeating&quot;</span><span class="fu">,</span> </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;REVERSED&quot;</span><span class="fu">}</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;isPartOfSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;containsSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceId</span> <span class="er">must</span> <span class="er">be</span> <span class="er">unique</span> <span class="er">in</span> <span class="er">the</span> <span class="er">Vehicle</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;mid-door-area&quot;</span><span class="fu">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceType</span> <span class="er">not</span> <span class="er">a</span> <span class="er">strict</span> <span class="er">enum</span> <span class="er">as</span> <span class="er">custom</span> <span class="er">values</span> <span class="er">are</span> <span class="er">allowed</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceType&quot;</span><span class="fu">:</span> <span class="st">&quot;wheelchair-standing-area&quot;</span><span class="fu">,</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entrances&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;endForwardSeating&quot;</span><span class="fu">,</span> </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;REVERSED&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;startRearSeating&quot;</span><span class="fu">,</span> </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;REVERSED&quot;</span><span class="fu">}</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;isPartOfSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;containsSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/PASSENGER-SPACE.json&quot;</span><span class="fu">,</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceId</span> <span class="er">must</span> <span class="er">be</span> <span class="er">unique</span> <span class="er">in</span> <span class="er">the</span> <span class="er">Vehicle</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;rear-area&quot;</span><span class="fu">,</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceType</span> <span class="er">not</span> <span class="er">a</span> <span class="er">strict</span> <span class="er">enum</span> <span class="er">as</span> <span class="er">custom</span> <span class="er">values</span> <span class="er">are</span> <span class="er">allowed</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceType&quot;</span><span class="fu">:</span> <span class="st">&quot;seating-area&quot;</span><span class="fu">,</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entrances&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;startRearSeating&quot;</span><span class="fu">,</span> </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGED&quot;</span><span class="fu">}</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;isPartOfSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;containsSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceId</span> <span class="er">must</span> <span class="er">be</span> <span class="er">unique</span> <span class="er">in</span> <span class="er">the</span> <span class="er">Vehicle</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;rear-area&quot;</span><span class="fu">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">spaceType</span> <span class="er">not</span> <span class="er">a</span> <span class="er">strict</span> <span class="er">enum</span> <span class="er">as</span> <span class="er">custom</span> <span class="er">values</span> <span class="er">are</span> <span class="er">allowed</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceType&quot;</span><span class="fu">:</span> <span class="st">&quot;seating-area&quot;</span><span class="fu">,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entrances&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;startRearSeating&quot;</span><span class="fu">,</span> </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGED&quot;</span><span class="fu">}</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;isPartOfSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;containsSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>The two spaces are linked by both having the “startRearSeating” entrance.</p>
-<h4 data-number="5.1.3.1" id="passenger-space---spacetype"><span class="header-section-number">5.1.3.1</span> PASSENGER SPACE - spaceType</h4>
+<h4 id="passenger-space---spacetype">5.1.3.1. PASSENGER SPACE - spaceType</h4>
 <blockquote>
 <p><strong><em>SPEC QUESTION:</em></strong> It is possible standard spaceTypes should be in the Detailed Data Model rather than the JSON section. This comments equally applies to other enums and some other spec-text found in Data Format JSON section.</p>
 </blockquote>
 <p>The intention with spaceType is to make data more readable, but also to allow processes that process output from the APC Aggregator to recognize a few common Space types, and generate reports (or other output) on those without understanding the specific naming of Spaces in all Vehicles.</p>
 <p>ÏTxPT standardized names are UPPER CASE, while other names should be lower case, avoiding conflict between non-standard names and future additional standard additions.</p>
-<p><strong>Standardized vehicleTypes</strong></p>
+<p><strong>Standardized spaceTypes</strong></p>
 <p><code>COMPOUND_TRAIN</code> - A space made up of several <code>TRAINS</code>/<code>VEHICLES</code></p>
 <p><code>VEHICLE</code> - A Space capable of independent movement. Expectation is that passengers can move between any Spaces that make up the <code>VEHICLE</code>.</p>
 <p><code>TRAIN_ELEMENT</code> - A car/carriage that makes up part of <code>VEHICLE</code></p>
@@ -372,58 +559,67 @@ All rights reserved.</p>
 <blockquote>
 <p><strong><em>SPEC QUESTION:</em></strong> More of these we should have? The standard don’t require any action so relatively harmless to add more types I would think.</p>
 </blockquote>
-<h3 data-number="5.1.4" id="entrance-for-passenger-space"><span class="header-section-number">5.1.4</span> ENTRANCE FOR PASSENGER SPACE</h3>
+<h3 id="entrance-for-passenger-space">5.1.4. ENTRANCE FOR PASSENGER SPACE</h3>
 <p>The entrance list of a Space consists of ENTRANCE FOR PASSENGER SPACE objects. Each object is made up of</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/ENTRANCE-FOR-PASSENGER-SPACE.json&quot;</span><span class="fu">,</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">entranceId</span> <span class="er">must</span> <span class="er">be</span> <span class="er">unique</span> <span class="er">in</span> <span class="er">the</span> <span class="er">Vehicle</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;EXTERNAL&quot;</span><span class="fu">,</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <ul>
 <li>entranceId must be unique in the Vehicle</li>
 <li>entranceType must be either “EXTERNAL” or “INTERNAL”</li>
 <li>direction must be either “ALIGNED” or “REVERSED”</li>
 </ul>
 <p>“ALIGNED” is used when any associated entrance sensor has entry/exit events of the same direction. “REVERSED” is used when entry/exit events are opposite, and an entry event for the entrance (sensor) is a exit event for the Space. If there is no associated sensor the value shall be null.</p>
-<h3 data-number="5.1.5" id="entrance-mapping"><span class="header-section-number">5.1.5</span> Entrance Mapping</h3>
+<h3 id="entrance-mapping">5.1.5. Entrance Mapping</h3>
 <p>Entrance Mapping is used when two entrances are next to each other or overlapping, and this makes two entrances work as one entrance. A typical use case would be two TRAIN ELEMENTS pared up so the entrance on the rear of the first carriage is the entrance at the front of the second.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/entranceId-mapping.json&quot;</span><span class="fu">,</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId1&quot;</span><span class="fu">:</span> <span class="st">&quot;car1287-rearEntrance&quot;</span><span class="fu">,</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId2&quot;</span><span class="fu">:</span> <span class="st">&quot;car2397-frontEntrance&quot;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId1&quot;</span><span class="fu">:</span> <span class="st">&quot;car1287-rearEntrance&quot;</span><span class="fu">,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId2&quot;</span><span class="fu">:</span> <span class="st">&quot;car2397-frontEntrance&quot;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>“ALIGNED” is used when an entry/exit is the same event for both entrances. “REVERSED” is used when an entry event for one is an exit event for the other.</p>
-<h2 data-number="5.2" id="apc-counting-data"><span class="header-section-number">5.2</span> APC Counting Data</h2>
+<h2 id="apc-counting-data">5.2. APC Counting Data</h2>
 <p>Counting data is the data that are actually wanted! These data items contains the information about entry/exit and occupancy of vehicles/spaces.</p>
-<h3 data-number="5.2.1" id="time-synchronization"><span class="header-section-number">5.2.1</span> Time synchronization</h3>
+<h3 id="time-synchronization">5.2.1. Time synchronization</h3>
 <p>APC Counting Data contains timestamps, and data analysis relies on the timestamps of different Providers to be in sync. Producers of APC Counting Data shall ensure that the timestamp is based on a synchronized UTC time. Onboard this means using the onboard SNTP service according to ITxPT S02P02 specification.</p>
 <blockquote>
-<p><strong><em>SPEC QUESTION:</em></strong> Perhaps not the best fit for the “Data format JSON” section. Perhaps have an “Other requirements” section between “Detailed Data Model” and “Data format JSON”?</p>
+<p><strong><em>SPEC QUESTION:</em></strong> Perhaps not the best fit for the “Data format JSON” section. Perhaps have an “Other requirements” section between “Detailed Data Model” and “Data format JSON”? Or perhaps it is a good fit, as other formats may use other mechanisms to connect data?</p>
 </blockquote>
-<h3 data-number="5.2.2" id="apc-objectcount-structure"><span class="header-section-number">5.2.2</span> APC objectCount structure</h3>
+<h3 id="quality-factor">Quality Factor</h3>
+<p>The counting data all all have a quality factor, <code>qf</code>, which indicates the quality of the <em>data</em>. It applies to the changes since the last transmission. It has the values - <code>HIGH</code> - No known problem with data. - <code>MODERATE</code> - Data <em>may</em> have some problems, but usable. - <code>LOW</code> - Data <em>may</em> have major differences with the actual data. - <code>ERROR</code> - The data is not reliable, and should not trusted.</p>
+<p><code>qf</code> is the quality of the <em>data</em> and not the state of the sensor/detection. E.g. a video based system may work fine, but have low confidence in reported data because someone carried an Billy bookshelf onboard and is obscuring most of the camera field of view.</p>
+<blockquote>
+<p><strong><em>NOTE OAB:</em></strong> <code>qf</code> could be a good candidate for more general standardization, perhaps as a Data Dictionary standard type.</p>
+</blockquote>
+<h3 id="apc-objectcount-structure">5.2.2. APC objectCount structure</h3>
 <p>The objectCount structure is used in several structures to count objects that enters, exits or are present in vehicles.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/apc-object-count.json&quot;</span><span class="fu">,</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;adults&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">21</span><span class="fu">},</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;children&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">},</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;wheelchairs&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;prams&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">},</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;bikes&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;luggage&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span> </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;composition&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;xs&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;small&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">},</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;medium&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;large&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">},</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;xl&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">}</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;others&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span> </span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;ext_custom&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;flatpack_furniture&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">}}</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;adults&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">21</span><span class="fu">},</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;children&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">},</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;wheelchairs&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;prams&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">},</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;bikes&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;luggage&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;composition&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;xs&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;small&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">},</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;medium&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">},</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;large&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">},</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;xl&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">}</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;others&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span> </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;ext_custom&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;flatpack_furniture&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">}}</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>In example above <code>"ext_customer": {"flatpack_furniture": {"count": 1}}</code> is a custom extension.</p>
 <p>The object count is reported on several defined object types.</p>
 <blockquote>
@@ -455,25 +651,39 @@ All rights reserved.</p>
 <li><code>large</code> - A larger suite case, backpack, etc. 75 - 100 litres.</li>
 <li><code>xl</code> - Above 100 litres.</li>
 </ul></li>
+<li><code>animals</code> - only animals <code>medium</code> or larger should be counted towards the “count”.
+<ul>
+<li><code>small</code> - E.g. cats and lapdogs. Does not use capacity, but may not be permitted in some Spaces.</li>
+<li><code>medium</code> - A “normal sized” dog or similar</li>
+<li><code>large</code> - A large dog</li>
+</ul></li>
 <li><code>others</code> - Anything that does not fit into the categories, or is defeats categorization.</li>
 </ul>
 <blockquote>
-<p><strong><em>SPEC QUESTION:</em></strong> Should we have sized-based subtypes for <code>others</code>? Like <code>small</code> - half adult sized, <code>medium</code> - adult sized, <code>large</code> - double adult sized, <code>xl</code> - multiple adults, <code>xxl</code> - more than one square meters</p>
+<p><strong><em>NOTE OAB:</em></strong> The reason I added <code>xs</code> and <code>small</code> for luggage was that while these are not useful for vehicle level occupancy, they could be used in <em>seat level</em> occupancy where one would like to know how many seats are taken by people putting a bag or similar on them.</p>
 </blockquote>
-<h3 data-number="5.2.3" id="passenger-entrance-count"><span class="header-section-number">5.2.3</span> PASSENGER ENTRANCE COUNT</h3>
+<blockquote>
+<p><strong><em>SPEC QUESTION:</em></strong> Should we have sized-based subtypes for <code>others</code>? Like <code>small</code> - half adult sized, <code>medium</code> - adult sized, <code>large</code> - double adult sized, <code>xl</code> - multiple adults, <code>xxl</code> - more than one square meters.</p>
+</blockquote>
+<blockquote>
+<p><strong><em>SPEC QUESTION:</em></strong> Should Space have some sort of ‘restriction’ property where it can be be specified that bikes/animals/etc are not allowed?</p>
+</blockquote>
+<h3 id="passenger-entrance-count">5.2.3. PASSENGER ENTRANCE COUNT</h3>
 <p>Number of entries/exits through a specific Entrance, for a specified <em>period</em> in time. Note that counts are cumulative since tsCountStart; to get the entries/exits for a smaller period, e.g. during a stop, the ‘before-value’ must be subtracted from the ‘after-value’. The use of cumulative counts means that the correct entries/exits of an entrance can be calculated even if some messages are lost.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/PASSENGER-ENTRANCE-COUNT.json&quot;</span><span class="fu">,</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entered&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;exited&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;trigger&quot;</span><span class="fu">:</span> <span class="st">&quot;DOORCLOSE&quot;</span><span class="fu">,</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;tsNow&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T07:33:04&quot;</span><span class="fu">,</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;tsCountStart&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T05:42:38&quot;</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Do</span> <span class="er">we</span> <span class="er">also</span> <span class="er">want</span> <span class="er">a</span> <span class="er">msgSeqNbr</span> <span class="er">?</span> </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;door2&quot;</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;qf&quot;</span><span class="fu">:</span> <span class="st">&quot;HIGH&quot;</span><span class="fu">,</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entered&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;exited&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;trigger&quot;</span><span class="fu">:</span> <span class="st">&quot;DOORCLOSE&quot;</span><span class="fu">,</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;timestamp&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T07:33:04&quot;</span><span class="fu">,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;tsCountStart&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T05:42:38&quot;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Do</span> <span class="er">we</span> <span class="er">also</span> <span class="er">want</span> <span class="er">a</span> <span class="er">msgSeqNbr</span> <span class="er">?</span> </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>entered and exited are cumulative counts. Once the Vehicle/Space goes empty -&gt; occupied -&gt; empty, the entered and exited count should - with perfect detection - be the same.</p>
-<h3 data-number="5.2.4" id="passenger-count-triggers"><span class="header-section-number">5.2.4</span> Passenger Count Triggers</h3>
+<h3 id="passenger-count-triggers">5.2.4. Passenger Count Triggers</h3>
 <p>An updated Passenger Count (any type) is produced for a reason. As part of the updated count, the reason for produced the update (at that moment) is provided, as a hint to analysis. While a trigger value is required, other values than those defined are allowed; trigger values that are not understood should be skipped by the analysis function, while still processing the count data.</p>
 <p>By convention standardized triggers are UPPER CASE. Non-standard values should be lower case to not interfere with future standardization.</p>
 <p><code>DOORCLOSE</code> - produced by (after processing) a door close event.</p>
@@ -490,66 +700,70 @@ All rights reserved.</p>
 <blockquote>
 <p><strong><em>SPEC QUESTION:</em></strong> Are any of these TRIGGERS mandatory for ITxPT label? If yes, which?</p>
 </blockquote>
-<h3 data-number="5.2.5" id="passenger-space-occupancy-count"><span class="header-section-number">5.2.5</span> PASSENGER SPACE OCCUPANCY COUNT</h3>
+<h3 id="passenger-space-occupancy-count">5.2.5. PASSENGER SPACE OCCUPANCY COUNT</h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/PASSENGER-SPACE-OCCUPANCY-COUNT.json&quot;</span><span class="fu">,</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;VIN1234566HJ&quot;</span><span class="fu">,</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;occupancy&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;trigger&quot;</span><span class="fu">:</span> <span class="st">&quot;PERIODIC&quot;</span><span class="fu">,</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;timestamp&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T07:33:48&quot;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Do</span> <span class="er">we</span> <span class="er">also</span> <span class="er">want</span> <span class="er">a</span> <span class="er">msgSeqNbr</span> <span class="er">?</span> </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;VIN1234566HJ&quot;</span><span class="fu">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;qf&quot;</span><span class="fu">:</span> <span class="st">&quot;HIGH&quot;</span><span class="fu">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;occupancy&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;trigger&quot;</span><span class="fu">:</span> <span class="st">&quot;PERIODIC&quot;</span><span class="fu">,</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;timestamp&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T07:33:48&quot;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Do</span> <span class="er">we</span> <span class="er">also</span> <span class="er">want</span> <span class="er">a</span> <span class="er">msgSeqNbr</span> <span class="er">?</span> </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>Property “trigger” according to Passenger Count Triggers above.</p>
 <p>“timestamp” is the time the Count was produced, or if production is not real-time the timestamp of the newest input data to the production.</p>
 <blockquote>
-<p><strong><em>SPEC QUESTION:</em></strong> For some methods like weight-based sensors it would be difficult to TBD</p>
+<p><strong><em>SPEC QUESTION:</em></strong> For some methods like weight-based sensors it may be difficult to produce a valid count?</p>
 </blockquote>
 <blockquote>
 <p><strong><em>SPEC QUESTION:</em></strong> If PSOC is based on entrance sensors, then if they are registering more people in one direction than the other, then over a full day, this could mean the occupancy has little connection to reality. This standard should probably recommend that OCCUPANCY COUNT is reset when the Vehicle/Space is (presumed) empty, but should the mechanism for signaling such a reset be part of the spec?</p>
 </blockquote>
-<h3 data-number="5.2.6" id="passenger-space-entrance-count"><span class="header-section-number">5.2.6</span> PASSENGER SPACE ENTRANCE COUNT</h3>
+<h3 id="passenger-space-entrance-count">5.2.6. PASSENGER SPACE ENTRANCE COUNT</h3>
 <p>Number of entries/exits through all entrances of a space. Has a spaceId instead of a sensorId/entranceId. Apart from that identical to PASSENGER SPACE ENTRANCE COUNT</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://github.com/ITxPT/&lt;something&gt;/PASSENGER-ENTRANCE-COUNT.json&quot;</span><span class="fu">,</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;car3&quot;</span><span class="fu">,</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entered&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;exited&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;trigger&quot;</span><span class="fu">:</span> <span class="st">&quot;DOORCLOSE&quot;</span><span class="fu">,</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;tsNow&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T22:33:30&quot;</span><span class="fu">,</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;tsCountStart&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T05:42:38&quot;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Do</span> <span class="er">we</span> <span class="er">also</span> <span class="er">want</span> <span class="er">a</span> <span class="er">msgSeqNbr</span> <span class="er">?</span> </span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-<h1 data-number="6" id="transport-mqtt-using-json-format"><span class="header-section-number">6</span> Transport MQTT using JSON format</h1>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;apiVersion&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceId&quot;</span><span class="fu">:</span> <span class="st">&quot;car3&quot;</span><span class="fu">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;qf&quot;</span><span class="fu">:</span> <span class="st">&quot;HIGH&quot;</span><span class="fu">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entered&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;exited&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;objectCount&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;trigger&quot;</span><span class="fu">:</span> <span class="st">&quot;DOORCLOSE&quot;</span><span class="fu">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;timestamp&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T22:33:30&quot;</span><span class="fu">,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;tsCountStart&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-06-09T05:42:38&quot;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Do</span> <span class="er">we</span> <span class="er">also</span> <span class="er">want</span> <span class="er">a</span> <span class="er">msgSeqNbr</span> <span class="er">?</span> </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h1 id="transport-mqtt-using-json-format">6. Transport MQTT using JSON format</h1>
 <p>The APC-II specification uses MQTT to transport messages with Format JSON. As this is a Data Centric specification more combinations of formats and transport could be added in the future, but no such needs have been identified for now.</p>
-<h2 data-number="6.1" id="general-requirements"><span class="header-section-number">6.1</span> General Requirements</h2>
+<h2 id="general-requirements">6.1. General Requirements</h2>
 <p>All MQTT Providers specified in this specification and Consumers using this data shall follow the requirements for MQTT Clients in S02P00 (Info: this only exists as internal draft)</p>
-<h2 data-number="6.2" id="security-considerations"><span class="header-section-number">6.2</span> Security Considerations</h2>
+<h2 id="security-considerations">6.2. Security Considerations</h2>
 <p>The potential security impact of APC are low. Disrupted or incorrect APC data are unlikely to lead to any safety concerns or serious operational problems.</p>
-<h2 data-number="6.3" id="performance-considerations"><span class="header-section-number">6.3</span> Performance Considerations</h2>
+<h2 id="performance-considerations">6.3. Performance Considerations</h2>
 <p>For a simple vehicle there is unlikely to be more than half a dozen entrance sensors, sending a few messages per minute. Including an onboard APC aggregator, there should still be less than one message per second. A more complex vehicle like a bi-level EMU <em>may</em> have multiple messages per second in total, but this should have a negligible impact on performance.</p>
 <p>Performance impact of APC is low.</p>
-<h2 data-number="6.4" id="functional-group-and-provider-names"><span class="header-section-number">6.4</span> Functional Group and Provider Names</h2>
+<h2 id="functional-group-and-provider-names">6.4. Functional Group and Provider Names</h2>
 <p>APC has its own functional Group <code>apc</code>. (To Be Confirmed!)</p>
 <p>APC has three types of providers:</p>
 <p><code>entrancesensor</code> - information about entry/exit for an entrance</p>
 <p><code>aggregator</code> - Provider(s) that outputs one or more of the APC counts for Spaces</p>
 <p><code>vehicledefine</code> - Information about how Spaces and Entrances are organized.</p>
-<h2 data-number="6.5" id="mqtt-apc-topic-tree"><span class="header-section-number">6.5</span> MQTT APC Topic tree</h2>
+<h2 id="mqtt-apc-topic-tree">6.5. MQTT APC Topic tree</h2>
 <figure>
 <img src="apc-topic-tree.svg" alt="MQTT Topic Tree" /><figcaption aria-hidden="true">MQTT Topic Tree</figcaption>
 </figure>
 <p><code>&lt;ProviderName&gt;</code>s in bold above.</p>
-<h2 data-number="6.6" id="entrancecounts-providers"><span class="header-section-number">6.6</span> <code>entrancecounts</code> Providers</h2>
+<h2 id="entrancecounts-providers">6.6. <code>entrancecounts</code> Providers</h2>
 <p>The <code>entrancecounts</code> Provider(s) are <em>not</em> required to be a physical sensors at each entrance. E.g. in a video based system the “video analysis engine” could provide both <code>PASSENGER ENTRANCE COUNT</code> and <code>PASSENGER SPACE OCCUPANCY COUNT</code> data.</p>
-<h3 data-number="6.6.1" id="inventory"><span class="header-section-number">6.6.1</span> Inventory</h3>
+<h3 id="inventory">6.6.1. Inventory</h3>
 <p>In addition to what is required by Inventory MQTT (which is TBD) the provider shall <strong>TBD</strong>. (But probably something about how it is configured at least.)</p>
-<h2 data-number="6.7" id="spacecounts-providers"><span class="header-section-number">6.7</span> <code>spacecounts</code> Providers</h2>
-<h3 data-number="6.7.1" id="inventory-1"><span class="header-section-number">6.7.1</span> Inventory</h3>
+<h2 id="spacecounts-providers">6.7. <code>spacecounts</code> Providers</h2>
+<h3 id="inventory-1">6.7.1. Inventory</h3>
 <p>In addition to what is required by Inventory MQTT (which is TBD) the provider shall <strong>TBD</strong>. (But probably something about how it is configured at least.)</p>
-<h2 data-number="6.8" id="vehicledefine-providers"><span class="header-section-number">6.8</span> <code>vehicledefine</code> Providers</h2>
+<h2 id="vehicledefine-providers">6.8. <code>vehicledefine</code> Providers</h2>
 <p>There may be multiple <code>vehicledefine</code> Providers, but if they publish contradictory information the result is undefined.</p>
 <p>The <code>[spaceId]</code>, <code>[sensorId-entranceId]</code> and <code>[entranceId1-enctranceId2]</code> part of the topics exists to separate data items of the same type and shall not be used. Subscribes shall be to <code>..apc/vehicledefine/*/spacedefines/*/*</code>, <code>..apc/vehicledefine/*/sensorentrancemapping/*/*</code> and <code>..apc/vehicledefine/*/entranceentrancemapping/*/*</code>.</p>
-<h3 data-number="6.8.1" id="inventory-2"><span class="header-section-number">6.8.1</span> Inventory</h3>
+<h3 id="inventory-2">6.8.1. Inventory</h3>
 <p>In addition to what is required by Inventory MQTT (which is TBD) the provider shall <strong>TBD</strong>. (But probably something about how it is configured at least.)</p>
 </body>
 </html>

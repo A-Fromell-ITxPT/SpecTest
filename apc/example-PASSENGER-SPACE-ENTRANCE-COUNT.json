@@ -1,10 +1,12 @@
 {
     "$schema": "https://github.com/ITxPT/<something>/PASSENGER-ENTRANCE-COUNT.json",
+    "apiVersion": 1.0,
     "spaceId": "car3",
+    "qf": "HIGH",
     "entered": "<objectCount>",
     "exited": "<objectCount>",
     "trigger": "DOORCLOSE",
-    "tsNow": "2021-06-09T22:33:30",
+    "timestamp": "2021-06-09T22:33:30",
     "tsCountStart": "2021-06-09T05:42:38"
     // Do we also want a msgSeqNbr ? 
 }

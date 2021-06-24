@@ -1,6 +1,8 @@
 {
     "$schema": "https://github.com/ITxPT/<something>/PASSENGER-SPACE-OCCUPANCY-COUNT.json",
+    "apiVersion": 1.0,
     "spaceId": "VIN1234566HJ",
+    "qf": "HIGH",
     "occupancy": "<objectCount>",
     "trigger": "PERIODIC",
     "timestamp": "2021-06-09T07:33:48"

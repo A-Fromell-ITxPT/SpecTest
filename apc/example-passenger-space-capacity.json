@@ -1,5 +1,6 @@
 {
     "$schema": "https://github.com/ITxPT/<something>/PASSENGER-SPACE-CAPACITY.json",
+    "apiVersion": 1.0,
     "spaceId": "Vehicle",
-    "objectCount": "<see objectCount def>"
+    "capacity": "<see objectCount def>"
 }

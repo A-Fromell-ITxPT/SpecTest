@@ -1,5 +1,6 @@
 {
     "$schema": "https://github.com/ITxPT/<something>/PASSENGER-SPACE.json",
+    "apiVersion": 1.0,
     // spaceId must be unique in the Vehicle
     "spaceId": "VIN1234567HG",
     // spaceType not a strict enum as custom values are allowed
