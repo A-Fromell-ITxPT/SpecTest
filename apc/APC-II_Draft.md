@@ -1,8 +1,9 @@
 ---
-title: S02- Onboard Architecture specification Part1X - APC-II
+fontfamily: dejavu
+mainfont: DejaVuSans
+title: S02- Onboard Architecture specification Part10 - APC-II
 ---
 
--   [](#modal-verbs-terminology)
 -   [1. Concepts and Terminology](#concepts-and-terminology)
     -   [1.1. ITxPT Data Dictionary
         Concepts](#itxpt-data-dictionary-concepts)
@@ -23,29 +24,29 @@ title: S02- Onboard Architecture specification Part1X - APC-II
     -   [4.3. Relations of Spaces](#relations-of-spaces)
         -   [4.3.1. Entrance-Entrance
             Mappings](#entrance-entrance-mappings)
-        -   [4.3.2. Two sensors for one
-            Entrance](#two-sensors-for-one-entrance)
+        -   [4.3.2. Multiple sensors for one
+            Entrance](#multiple-sensors-for-one-entrance)
     -   [4.4. No Spaces defined](#no-spaces-defined)
 -   [5. Data Format JSON](#data-format-json)
-    -   [API version](#api-version)
-    -   [5.1. APC Static Data](#apc-static-data)
-        -   [5.1.1. SensorId to entranceId
+    -   [5.1. API version](#api-version)
+    -   [5.2. APC Static Data](#apc-static-data)
+        -   [5.2.1. SensorId to entranceId
             mapping](#sensorid-to-entranceid-mapping)
-        -   [5.1.2. PASSENGER SPACE CAPACITY](#passenger-space-capacity)
-        -   [5.1.3. PASSENGER SPACE](#passenger-space)
-        -   [5.1.4. ENTRANCE FOR PASSENGER
+        -   [5.2.2. PASSENGER SPACE CAPACITY](#passenger-space-capacity)
+        -   [5.2.3. PASSENGER SPACE](#passenger-space)
+        -   [5.2.4. ENTRANCE FOR PASSENGER
             SPACE](#entrance-for-passenger-space)
-        -   [5.1.5. Entrance Mapping](#entrance-mapping)
-    -   [5.2. APC Counting Data](#apc-counting-data)
-        -   [5.2.1. Time synchronization](#time-synchronization)
-        -   [Quality Factor](#quality-factor)
-        -   [5.2.2. APC objectCount
+        -   [5.2.5. Entrance Mapping](#entrance-mapping)
+    -   [5.3. APC Counting Data](#apc-counting-data)
+        -   [5.3.1. Time synchronization](#time-synchronization)
+        -   [5.3.2. Quality Factor](#quality-factor)
+        -   [5.3.3. APC objectCount
             structure](#apc-objectcount-structure)
-        -   [5.2.3. PASSENGER ENTRANCE COUNT](#passenger-entrance-count)
-        -   [5.2.4. Passenger Count Triggers](#passenger-count-triggers)
-        -   [5.2.5. PASSENGER SPACE OCCUPANCY
+        -   [5.3.4. PASSENGER ENTRANCE COUNT](#passenger-entrance-count)
+        -   [5.3.5. Passenger Count Triggers](#passenger-count-triggers)
+        -   [5.3.6. PASSENGER SPACE OCCUPANCY
             COUNT](#passenger-space-occupancy-count)
-        -   [5.2.6. PASSENGER SPACE ENTRANCE
+        -   [5.3.7. PASSENGER SPACE ENTRANCE
             COUNT](#passenger-space-entrance-count)
 -   [6. Transport MQTT using JSON
     format](#transport-mqtt-using-json-format)
@@ -55,12 +56,16 @@ title: S02- Onboard Architecture specification Part1X - APC-II
     -   [6.4. Functional Group and Provider
         Names](#functional-group-and-provider-names)
     -   [6.5. MQTT APC Topic tree](#mqtt-apc-topic-tree)
-    -   [6.6. `entrancecounts` Providers](#entrancecounts-providers)
-        -   [6.6.1. Inventory](#inventory)
-    -   [6.7. `spacecounts` Providers](#spacecounts-providers)
-        -   [6.7.1. Inventory](#inventory-1)
-    -   [6.8. `vehicledefine` Providers](#vehicledefine-providers)
-        -   [6.8.1. Inventory](#inventory-2)
+    -   [6.6. Note on Provider IDs](#note-on-provider-ids)
+    -   [6.7. Static Data](#static-data)
+    -   [6.8. `entrance_counts` Providers](#entrance_counts-providers)
+        -   [6.8.1. Inventory](#inventory)
+    -   [6.9. `space_entrance_counts`
+        Providers](#space_entrance_counts-providers)
+        -   [6.9.1. Inventory](#inventory-1)
+    -   [6.10. `space_occupancy_counts`
+        Providers](#space_occupancy_counts-providers)
+        -   [6.10.1. Inventory](#inventory-2)
 
 **Version History**
 
@@ -68,6 +73,7 @@ title: S02- Onboard Architecture specification Part1X - APC-II
 |-----------------|---------|----------------------------------|--------|
 | early June 2021 | 0.1.0   | Initial TWG draft                | OAB    |
 | 2021-06-24      | 0.2.0   | Updates after first walk through | OAB    |
+| 2021-07-06      | 0.2.1   | Minor update after comments      | OAB    |
 
 <table style="width:99%;">
 <colgroup>
@@ -125,7 +131,7 @@ status of this and other ITxPT documents is available at
 © ITxPT 2021  
 All rights reserved.
 
-# 
+# Modal verbs terminology
 
 In the present document "**shall**", "**shall not**", "**should**",
 "**should not**", "**may**", "**need not**", "**will"**, **"will not"**,
@@ -157,36 +163,10 @@ standard and from which no deviation is permitted. For example, the
 requirements to be followed may relate to values, actions, features to
 be supported and/or used or presence/absence or optional elements.
 
-<table>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 79%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Verbal form</th>
-<th>Equivalent expressions used in exceptional cases[^1]</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>shall</strong></td>
-<td><p>is to</p>
-<p>is required to</p>
-<p>it is required that</p>
-<p>has to</p>
-<p>only ... is permitted</p>
-<p>it is necessary</p></td>
-</tr>
-<tr class="even">
-<td><strong>shall not</strong></td>
-<td><p>is not allowed [permitted] [acceptable] [permissible]</p>
-<p>is required to be not</p>
-<p>is required that ... be not</p>
-<p>is not to be</p></td>
-</tr>
-</tbody>
-</table>
+| Verbal form   | Equivalent expressions used in exceptional cases\[^1\]                                                                     |
+|---------------|----------------------------------------------------------------------------------------------------------------------------|
+| **shall**     | is to<br>is required to<br>it is required that<br>has to<br>only ... is permitted<br>it is necessary                       |
+| **shall not** | is not allowed / permitted / acceptable /permissible<br>is required to be not<br>is required that … be not<br>is not to be |
 
 Table T1 - Requirement
 
@@ -401,7 +381,7 @@ the Data is being processed or generated. In particular it does not
 contain any requirements on what is done onboard and what is done in the
 back office.
 
-![Image Caption](highlevel.svg)
+![Overview door based](apc-highlevel.drawio.png)
 
 Above is a “traditional” setup using door sensors on the vehicle doors,
 and similar sensors between carriages. For the defined PASSENGER SPACES,
@@ -414,7 +394,7 @@ Vehicle Doors, and Video analysis for tracking internal movement between
 Spaces is one possibility. Another would be Video analysis supported by
 Axle load sensors, as shown below:
 
-![Image Caption](highlevel_video-axle.svg)
+![Overview axel/video based](apc-highlevel_video-axle.drawio.png)
 
 Many other configurations are possible.
 
@@ -434,55 +414,60 @@ explanation is added here to aid the readability of the specification.
 The simplest configuration is a Vehicle with one Space for the entire
 vehicle, and one or more Entrances:
 
-![Spaces - Simple Vehicle](spaces_bus.svg)
+![Spaces - Simple Vehicle](apc-spaces_bus.drawio.png)
 
 For a more complicated configuration there is still the Space for the
 entire Vehicle, but there are also Spaces for parts of the Vehicle:
 
-![Spaces - Bilevel Vehicle](spaces_ddbus.svg) In this Double Deck Bus,
-APC data can be reported for the entire Vehicle (Space: Vehicle), but
-also for the upper floor (Space: Upper floor) and the lower floor
-(Space: Lower floor).
+![Spaces - Bilevel Vehicle](apc-spaces_ddbus.drawio.png)
+
+In this Double Deck Bus, APC data can be reported for the entire Vehicle
+(Space: Vehicle), but also for the upper floor (Space: Upper floor) and
+the lower floor (Space: Lower floor).
 
 There is no limit in the specification how Spaces are nested, or how
 many nested spaces there is.
 
-![Spaces - Complex Vehicle](spaces_emu.svg)
+![Spaces - Complex Vehicle](apc-spaces_emu.drawio.png)
 
 In this three carriage EMU there is a Space for the entire Vehicle, one
 Space for each of the three Carriages, and then one of the Carriages is
 further divided in a 1st-Class Space and an Economy-Class Space. Here
-are also the Entrances marked, both the external entrances (red,
-into/out of the Vehicle) and the internal entrances (blue, between
-Spaces).
+are also the Entrances marked, both the external entrances (orange
+solid, into/out of the Vehicle) and the internal entrances (orange
+dotted, between Spaces).
 
 And it does not stop there. The way this specification supports seat
-occupancy reporting is by defining a Space for each seat, and reporting
-the Occupancy on that.
+occupancy reporting is by defining a *Space for each seat*, and
+reporting the Occupancy on the “seat Space”.
 
 # 3. Conceptual Data Model
 
-![Conceptual Data Model](conceptual-data-model.svg)
+![Conceptual Data Model](apc-conceptual-data-model.drawio.png)
 
 PASSENGER SPACE, PASSENGER SPACE CAPACITY and PASSENGER ENTRANCE are all
 statically configured (they will not change during operation) and are
-shown in darker yellow. PASSENGER ENTRANCE COUNT, PASSENGER SPACE
+shown in darker colour. PASSENGER ENTRANCE COUNT, PASSENGER SPACE
 ENTRANCE COUNT, and PASSENGER SPACE OCCUPANCY COUNT all contain
 passenger count data and will change regularly during operation and are
-shown in ligher yellow.
+shown in lighter colour.
 
 # 4. Detailed Data Model
 
 The Conceptual Data Model above shows how the defined Concepts relates
 to each other. But it does not provide enough details to be the basis of
-a transmission format.
+a standard format.
 
 To do that additional details are provided.
 
-![Detailed Data Model](detailed-data-model.svg)
+![Detailed Data Model](apc-detailed-data-model.drawio.png)
+
+The darker colour is used for static data, while the lighter colour is
+used for Counting data.
 
 A number of things have changed. Relationships between different objects
-are now set by spaceId and entranceId.
+are now set by spaceId and entranceId, as *indicated* by the dotted
+lines.
 
 PASSENGER ENTRANCE is not present as a separate class, as it did not
 carry any information that needed stand-alone representation.
@@ -571,15 +556,15 @@ this, and handle both possibilities.
 > Should we add to EntranceRef if the Entrance have a Entrance Sensor or
 > not?
 
-### 4.3.2. Two sensors for one Entrance
+### 4.3.2. Multiple sensors for one Entrance
 
-In some cases there may be two independent sensors for one PASSENGER
-ENTRANCE. E.g. there may be both a door sensor *and* a video based
-system monitoring system, both reporting entry/exit data on the same
-physical entrance. In these cases the two systems needs to report
-entrance data using *different* entrance Ids, and then an
-Entrance-Entrance Mapping is used to define that these sensors are
-covering the same PASSENGER ENTRANCE.
+In some cases there may be multiple independent sensors for one
+PASSENGER ENTRANCE. E.g. there may be both a door sensor *and* a video
+based monitoring system, both reporting entry/exit data on the same
+physical entrance. In these cases the systems needs to report entrance
+data using *different* entrance Ids, and then an Entrance-Entrance
+Mapping is used to define that these sensors are covering the same
+PASSENGER ENTRANCE.
 
 ## 4.4. No Spaces defined
 
@@ -615,7 +600,7 @@ or contradiction is found between the schemas and this document an issue
 should be raised with ITxPT, which will resolve the problem with a
 minimum impact.
 
-## API version
+## 5.1. API version
 
 The property `apiVersion` is used to track the current version of the
 data. This is *not* the ITxPT specification version, which may change
@@ -624,7 +609,7 @@ without the data being affected.
 > ***NOTE OAB:*** `apiVersion` a good candidate for more general
 > standardization, perhaps as a Data Dictionary standard type.
 
-## 5.1. APC Static Data
+## 5.2. APC Static Data
 
 Static Data describes how the Vehicle is configured. It should change
 only when the vehicle is reconfigured, which should be never for many
@@ -632,7 +617,7 @@ Vehicles and seldom for the others. In particular the static data will
 not change during operation. The exception to this could be COMPOUND
 TRAINs, but even there each TRAIN would stay fixed.
 
-### 5.1.1. SensorId to entranceId mapping
+### 5.2.1. SensorId to entranceId mapping
 
 For Entrance Sensors that identify with the sensorId, a mapping of the
 sensorId to entranceId must be provided.
@@ -652,7 +637,7 @@ While this could be posted by anyone, the use case is that sensors don’t
 (need to) know where they are in the Vehicle, but this is known to some
 other onboard or back office system.
 
-### 5.1.2. PASSENGER SPACE CAPACITY
+### 5.2.2. PASSENGER SPACE CAPACITY
 
 This is the number of Objects that a Space (Vehicle) can accommodate at
 100% utilization.
@@ -692,7 +677,7 @@ children, 1 wheelchair and 2 prams.
 > addition to “capacity” also have “seatedCapacity” and
 > “standingCapacity”?
 
-### 5.1.3. PASSENGER SPACE
+### 5.2.3. PASSENGER SPACE
 
 The space structures is what APC count structures can be reported on.
 
@@ -758,7 +743,7 @@ sub-spaces below
 The two spaces are linked by both having the “startRearSeating”
 entrance.
 
-#### 5.1.3.1. PASSENGER SPACE - spaceType
+#### 5.2.3.1. PASSENGER SPACE - spaceType
 
 > ***SPEC QUESTION:*** It is possible standard spaceTypes should be in
 > the Detailed Data Model rather than the JSON section. This comments
@@ -800,7 +785,7 @@ passengers can move between any Spaces that make up the `VEHICLE`.
 > require any action so relatively harmless to add more types I would
 > think.
 
-### 5.1.4. ENTRANCE FOR PASSENGER SPACE
+### 5.2.4. ENTRANCE FOR PASSENGER SPACE
 
 The entrance list of a Space consists of ENTRANCE FOR PASSENGER SPACE
 objects. Each object is made up of
@@ -826,7 +811,7 @@ are opposite, and an entry event for the entrance (sensor) is a exit
 event for the Space. If there is no associated sensor the value shall be
 null.
 
-### 5.1.5. Entrance Mapping
+### 5.2.5. Entrance Mapping
 
 Entrance Mapping is used when two entrances are next to each other or
 overlapping, and this makes two entrances work as one entrance. A
@@ -843,17 +828,17 @@ second.
 }
 ```
 
-“ALIGNED” is used when an entry/exit is the same event for both
-entrances. “REVERSED” is used when an entry event for one is an exit
+`ALIGNED` is used when an entry/exit is the same event for both
+entrances. `REVERSED` is used when an entry event for one is an exit
 event for the other.
 
-## 5.2. APC Counting Data
+## 5.3. APC Counting Data
 
 Counting data is the data that are actually wanted! These data items
 contains the information about entry/exit and occupancy of
 vehicles/spaces.
 
-### 5.2.1. Time synchronization
+### 5.3.1. Time synchronization
 
 APC Counting Data contains timestamps, and data analysis relies on the
 timestamps of different Providers to be in sync. Producers of APC
@@ -866,7 +851,7 @@ ITxPT S02P02 specification.
 > “Detailed Data Model” and “Data format JSON”? Or perhaps it is a good
 > fit, as other formats may use other mechanisms to connect data?
 
-### Quality Factor
+### 5.3.2. Quality Factor
 
 The counting data all all have a quality factor, `qf`, which indicates
 the quality of the *data*. It applies to the changes since the last
@@ -883,7 +868,7 @@ onboard and is obscuring most of the camera field of view.
 > ***NOTE OAB:*** `qf` could be a good candidate for more general
 > standardization, perhaps as a Data Dictionary standard type.
 
-### 5.2.2. APC objectCount structure
+### 5.3.3. APC objectCount structure
 
 The objectCount structure is used in several structures to count objects
 that enters, exits or are present in vehicles.
@@ -983,7 +968,7 @@ The defined types are:
 > property where it can be be specified that bikes/animals/etc are not
 > allowed?
 
-### 5.2.3. PASSENGER ENTRANCE COUNT
+### 5.3.4. PASSENGER ENTRANCE COUNT
 
 Number of entries/exits through a specific Entrance, for a specified
 *period* in time. Note that counts are cumulative since tsCountStart; to
@@ -1011,7 +996,7 @@ entered and exited are cumulative counts. Once the Vehicle/Space goes
 empty -> occupied -> empty, the entered and exited count should - with
 perfect detection - be the same.
 
-### 5.2.4. Passenger Count Triggers
+### 5.3.5. Passenger Count Triggers
 
 An updated Passenger Count (any type) is produced for a reason. As part
 of the updated count, the reason for produced the update (at that
@@ -1023,7 +1008,9 @@ while still processing the count data.
 By convention standardized triggers are UPPER CASE. Non-standard values
 should be lower case to not interfere with future standardization.
 
-`DOORCLOSE` - produced by (after processing) a door close event.
+`DOORS_CLOSED` - produced directly after a door close event.
+
+`DOORS_CLOSING` - produced while the doors are closing.
 
 `THRESHOLD` - produced after reaching some configured threshold, e.g. 10
 entries+exits.
@@ -1031,24 +1018,30 @@ entries+exits.
 `PERIODIC` - produced because a time period has elapsed since last
 produced.
 
-`COUNTADJUST` - the count has been adjusted, by a non-apc event. E.g.
+`COUNT_ADJUST` - the count has been adjusted, by a non-apc event. E.g.
 the driver has indicated the Vehicle is empty.
 
-`PROVIDERRESET` - The Provider has reset (intentionally or
+`PROVIDER_RESET` - The producer has reset (intentionally or
 unintentionally) and start from “zero”.
 
-> ***SPEC QUESTION:*** Should there be `DOOROPEN` trigger? While not
+> ***SPEC QUESTION:*** Should there be `DOORS_OPEN` trigger? While not
 > useful for the counting as such, it could be useful for analysis of
 > how long doors were open without pulling in further data.
 
-> ***SPEC QUESTION:*** Should there be `ALLDOORCLOSE` trigger? Could be
-> more descriptive for the SPACE COUNTS than `DOORCLOSE` that does not
-> say which if doors close at different times.
+> ***SPEC QUESTION:*** Should there be `ALL_DOORS_CLOSED` trigger? Could
+> be more descriptive for the SPACE COUNTS than `DOORS_CLOSED` that does
+> not say which if doors close at different times.
+
+> ***SPEC QUESTION:*** Also discussed on meeting if `VEHICLE_MOVING` /
+> `LEFT_STOP` would be useful. Don’t think it would be useful by current
+> scope of APC spec that don’t know anything about movement, but it
+> could be useful for higher level reports that does know about STOP
+> PLACES and VEHICLE movement.
 
 > ***SPEC QUESTION:*** Are any of these TRIGGERS mandatory for ITxPT
 > label? If yes, which?
 
-### 5.2.5. PASSENGER SPACE OCCUPANCY COUNT
+### 5.3.6. PASSENGER SPACE OCCUPANCY COUNT
 
 ``` json
 {
@@ -1078,7 +1071,7 @@ real-time the timestamp of the newest input data to the production.
 > COUNT is reset when the Vehicle/Space is (presumed) empty, but should
 > the mechanism for signaling such a reset be part of the spec?
 
-### 5.2.6. PASSENGER SPACE ENTRANCE COUNT
+### 5.3.7. PASSENGER SPACE ENTRANCE COUNT
 
 Number of entries/exits through all entrances of a space. Has a spaceId
 instead of a sensorId/entranceId. Apart from that identical to PASSENGER
@@ -1133,56 +1126,64 @@ Performance impact of APC is low.
 
 APC has its own functional Group `apc`. (To Be Confirmed!)
 
-APC has three types of providers:
+APC has four types of providers:
 
-`entrancesensor` - information about entry/exit for an entrance
+`apc_static` - data about the vehicle. This is not tied to a
+`apc_static` provider, and *may* be posted by/with any Provider (ID).
 
-`aggregator` - Provider(s) that outputs one or more of the APC counts
-for Spaces
+`entrance_counts` - information about entry/exit for an entrance
 
-`vehicledefine` - Information about how Spaces and Entrances are
-organized.
+`space_entrance_counts` - information about entry/exit for a space.
+
+`occupancy_count` - information about occupancy of a space.
 
 ## 6.5. MQTT APC Topic tree
 
-![MQTT Topic Tree](apc-topic-tree.svg)
+![MQTT Topic Tree](apc-topic-tree.png)
 
-`<ProviderName>`s in bold above.
+## 6.6. Note on Provider IDs
 
-## 6.6. `entrancecounts` Providers
+If an entity publishes on multiple of the `*_counts` Providers it *may*
+use the Provider name `apc_counts` for all of them, rather than a
+separate Provider name/ID for each.
 
-The `entrancecounts` Provider(s) are *not* required to be a physical
-sensors at each entrance. E.g. in a video based system the “video
-analysis engine” could provide both `PASSENGER ENTRANCE COUNT` and
-`PASSENGER SPACE OCCUPANCY COUNT` data.
+## 6.7. Static Data
 
-### 6.6.1. Inventory
-
-In addition to what is required by Inventory MQTT (which is TBD) the
-provider shall **TBD**. (But probably something about how it is
-configured at least.)
-
-## 6.7. `spacecounts` Providers
-
-### 6.7.1. Inventory
-
-In addition to what is required by Inventory MQTT (which is TBD) the
-provider shall **TBD**. (But probably something about how it is
-configured at least.)
-
-## 6.8. `vehicledefine` Providers
-
-There may be multiple `vehicledefine` Providers, but if they publish
-contradictory information the result is undefined.
+Static data is published under `apc/apc_static`. There are no rules on
+which entities/providers publish the static data; as long as the needed
+static data is available it is within spec.
 
 The `[spaceId]`, `[sensorId-entranceId]` and
 `[entranceId1-enctranceId2]` part of the topics exists to separate data
-items of the same type and shall not be used. Subscribes shall be to
+items of the same type and shall not be used by the clients. The Client
+shall use the Ids found in the the payload. Subscribes shall be to
 `..apc/vehicledefine/*/spacedefines/*/*`,
 `..apc/vehicledefine/*/sensorentrancemapping/*/*` and
 `..apc/vehicledefine/*/entranceentrancemapping/*/*`.
 
+## 6.8. `entrance_counts` Providers
+
+The `entrance_counts` Provider(s) are *not* required to be a physical
+sensors at each entrance. E.g. in a video based system the “video
+analysis engine” could provide `PASSENGER ENTRANCE COUNT`.
+
 ### 6.8.1. Inventory
+
+In addition to what is required by Inventory MQTT (which is TBD) the
+provider shall **TBD**. (But probably something about how it is
+configured at least.)
+
+## 6.9. `space_entrance_counts` Providers
+
+### 6.9.1. Inventory
+
+In addition to what is required by Inventory MQTT (which is TBD) the
+provider shall **TBD**. (But probably something about how it is
+configured at least.)
+
+## 6.10. `space_occupancy_counts` Providers
+
+### 6.10.1. Inventory
 
 In addition to what is required by Inventory MQTT (which is TBD) the
 provider shall **TBD**. (But probably something about how it is

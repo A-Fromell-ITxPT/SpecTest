@@ -1,0 +1,20 @@
+/*
+ * I add this to html files generated with pandoc.
+ */
+
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  color: #444;
+  font-family: sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  padding: 1em;
+  margin: auto;
+}
+

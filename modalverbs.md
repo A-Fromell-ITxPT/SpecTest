@@ -1,5 +1,4 @@
- {#modal-verbs-terminology .ListParagraph}
-=======================
+ # Modal verbs terminology
 
 In the present document \"**shall**\", \"**shall not**\",
 \"**should**\", \"**should not**\", \"**may**\", \"**need not**\",
@@ -32,29 +31,12 @@ standard and from which no deviation is permitted. For example, the
 requirements to be followed may relate to values, actions, features to
 be supported and/or used or presence/absence or optional elements.
 
-+---------------+-------------------------------------------------------------+
+
 | Verbal form   | Equivalent expressions used in exceptional cases[^1]        |
-+===============+=============================================================+
-| **shall**     | is to                                                       |
-|               |                                                             |
-|               | is required to                                              |
-|               |                                                             |
-|               | it is required that                                         |
-|               |                                                             |
-|               | has to                                                      |
-|               |                                                             |
-|               | only \... is permitted                                      |
-|               |                                                             |
-|               | it is necessary                                             |
-+---------------+-------------------------------------------------------------+
-| **shall not** | is not allowed \[permitted\] \[acceptable\] \[permissible\] |
-|               |                                                             |
-|               | is required to be not                                       |
-|               |                                                             |
-|               | is required that \... be not                                |
-|               |                                                             |
-|               | is not to be                                                |
-+---------------+-------------------------------------------------------------+
+|---------------|-------------------------------------------------------------|
+| **shall**     | is to<br>is required to<br>it is required that<br>has to<br>only \... is permitted<br>it is necessary |
+| **shall not** | is not allowed / permitted / acceptable /permissible<br>is required to be not<br>is required that ... be not<br>is not to be |
+
 
 Table T1 - Requirement
 
