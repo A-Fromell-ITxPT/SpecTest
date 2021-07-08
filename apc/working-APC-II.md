@@ -12,6 +12,7 @@ title: S02- Onboard Architecture specification Part10 - APC-II
 | early June 2021 | 0.1.0 | Initial TWG draft | OAB |
 | 2021-06-24 | 0.2.0 | Updates after first walk through | OAB | 
 | 2021-07-06 | 0.2.1 | Minor update after comments | OAB |
+| 2021-07-08 | 0.3.0 | Some update after TWG03 meeting. Topic tree rework, reset function, OCCUPANCY RATIO msg, etc | OAB |
 
 
 !include ../copyright.md
@@ -37,6 +38,10 @@ In addition the following terminology is used in the specification.
 
 **APC Aggregator:** A component/module/process/etc that generates APC data based on inputs. 
 
+**PASSENGER SPACE OCCUPANCY RATIO:** A fraction describing the current level of occupancy. Should be close to PASSENGER SPACE OCCUPANCY COUNT divided by PASSENGER SPACE CAPACITY. 
+
+> **_NOTE OAB:_** This should probably be added to DD. 
+
 # 2. APC-II Solution description
 
 ## 2.1. Relation to ITxPT S02P07 APC Specification 
@@ -46,7 +51,7 @@ The specification is broadly similar to S02P07, and in some aspects _very_ simil
 - Changed data format to JSON
 - Changed Transport to MQTT 
 
-As such the old specification have been kept as a Legacy specification to support existing equipment and consumers, and this specification has been introduced as a new specification, APC-II
+As such the old specification have been kept as a Legacy specification to support existing equipment and clients/consumers, and the S02P10 APC-II specification has been introduced as a new specification
 
 ## 2.2. Purpose of APC 
 
@@ -135,7 +140,7 @@ It must either be ensured that the IDs are unique for all the possible combinati
 One Entrance may belong to multiple Spaces. E.g. an external entrance, Door7, may belong to the Vehicle Space, to the Carriage1 Space, and to the Carriage1-SilentCompartment Space. When one passenger enters through Door7 this is only one new passenger in the Vehicle, one new passenger in Carriage1 and one new passenger in Carriage1-SilentCompartment. 
 
 ### 4.2.1. Sensor Entrance Mapping
-The SensorEntranceMapping entity allows the sensors to not know their entranceId, as long as another actor supplies that. It also make it possible to have two, or more, sensors for one entrance, e.g. a left and right sensor for a wide entrance.  
+The SensorEntranceMapping entity allows the sensors to not know their entranceId, as long as another actor supplies that. It also make it possible to have two, or more, sensors for one entrance, e.g. a left and right sensor for a wide entrance. When two or more sensorIDs are mapped to *the same entranceID* the the entry/exit of that PASSENGER ENTRANCE is the **sum** of the PASSENGER ENTRANCE COUNTs that are reported with sensorIDs mapped that entrance. 
 
 ### 4.2.2. External entrances
 
@@ -147,27 +152,23 @@ Each Space that is not a Vehicle Space will be next to one or more other spaces.
 
 If the entrances are ALIGNED, then on entry a PASSENGER will be present in both Spaces. If the entrances are REVERSED, then a PASSENGER will enter one Space while exiting the others. 
 
-> **_SPEC QUESTION:_** While not rocket science, the potential structure of Spaces could grow fairly complex. In ITxPT Labelling should we have different levels of supported complexity? 
-
 ### 4.3.1. Entrance-Entrance Mappings
 
 In cases where two spaces are next to each other, but _don't_ have the same entrance ID on what is the passage between them, this is resolved by and Entrance-Entrance Mapping. This will then be used to determine that e.g. the entrance "car123-rear" for space "car123" is now connected to the entrance "car345-front" for space "car345". Now a car123-rear exit will be a car345-front entry, and vice versa.
 
 A mapped entrance could have one Entrance Sensor, so that a PASSENGER ENTRANCE COUNT will be generated with one of the entrance IDs, but not the other. Or there could be a sensor for each of them, so that for each PASSENGER entry/exit there will be a PASSENGER ENTRANCE COUNT generated with each of the entrance IDs. The APC Aggregator needs to account for this, and handle both possibilities. 
 
-> **_SPEC QUESTION:_** This concept seemed great on paper. But thinking about the implementation it may be surprisingly complex to handle that there could be one or two sensors without knowing which is the case. Should we add to EntranceRef if the Entrance have a Entrance Sensor or not?
-
 ### 4.3.2. Multiple sensors for one Entrance
 
-In some cases there may be multiple independent sensors for one PASSENGER ENTRANCE. E.g. there may be both a door sensor _and_ a video based  monitoring system, both reporting entry/exit data on the same physical entrance. In these cases the systems needs to report entrance data using _different_ entrance Ids, and then an Entrance-Entrance Mapping is used to define that these sensors are covering the same PASSENGER ENTRANCE. 
+In some cases there may be multiple independent sensors for one PASSENGER ENTRANCE. E.g. there may be both a door sensor _and_ a video based  monitoring system, both reporting entry/exit data on the same physical entrance. In these cases the systems needs to report entrance data using _different_ entrance Ids, and then an Entrance-Entrance Mapping is used to define that these sensors are covering the same PASSENGER ENTRANCE.
+
+When PASSENGER ENTRANCE COUNTs are reported with _different_ entranceIDs that are mapped to the same entrance, these counts are *complimentary*. The APC Aggregator may use counts reported with one entranceID, or use counts reported with several entranceIDs to create better quality data
 
 ## 4.4. No Spaces defined
 
 If there are NO Spaces defined for a Vehicle, it shall be assumed that it is a single Space Vehicle. All PASSENGER ENTRANCE COUNT data items should be assumed to be EXTERNAL and PASSENGER SPACE OCCUPANCY COUNT, PASSENGER SPACE ENTRANCE COUNT, etc generated accordingly. 
 
 Since a single Space is assumed, both sensor ID and entrance ID shall be accepted as identification of a PASSENGER ENTRANCE COUNT data item, without a need for a SensorEntranceMapping.
-
-> **_SPEC QUESTION:_** This is added to simplify the single-space vehicle/bus case, which does not gain anything by having a Space defined(?) OTOH defining a Space is not hard, and removes this special case. Lets discuss. 
 
 
 # 5. Data Format JSON
@@ -176,18 +177,22 @@ The Data Format for APC-II is JSON. As this is a Data Centric specification more
 
 The Data Format JSON section is organized in two sections. First is the static data that provides the information about how the Vehicle is "organized", and then is the data that contains the Passenger Counts themselves. 
 
+## 5.1. JSON Schemas
+
 For brevity the JSON schemas are not included in this document, but can be found on the ITxPT github. For APC-II the schemas are regarded as part of the specification with no distinction in priority. If a conflict or contradiction is found between the schemas and this document an issue should be raised with ITxPT, which will resolve the problem with a minimum impact. 
 
-## 5.1. API version
+As part of JSON example `$schema` property name is used to show which JSON schema applies. The `$schema` property should not be part of data published by the implementation. 
+
+## 5.2. API version
 
 The property `apiVersion` is used to track the current version of the data. This is _not_ the ITxPT specification version, which may change without the data being affected.
 
 > **_NOTE OAB:_** `apiVersion` a good candidate for more general standardization, perhaps as a Data Dictionary standard type. 
 
-## 5.2. APC Static Data
+## 5.3. APC Static Data
 Static Data describes how the Vehicle is configured. It should change only when the vehicle is reconfigured, which should be never for many Vehicles and seldom for the others. In particular the static data will not change during operation. The exception to this could be COMPOUND TRAINs, but even there each TRAIN would stay fixed. 
 
-### 5.2.1. SensorId to entranceId mapping
+### 5.3.1. SensorId to entranceId mapping
 For Entrance Sensors that identify with the sensorId, a mapping of the sensorId to entranceId must be provided. 
 
 ```json
@@ -196,7 +201,7 @@ For Entrance Sensors that identify with the sensorId, a mapping of the sensorId 
 
 This is used by the APC Aggregator to know that a PASSENGER ENTRANCE COUNT data item with a sensorId(s) belong to a specific entranceId. While this could be posted by anyone, the use case is that sensors don't (need to) know where they are in the Vehicle, but this is known to some other onboard or back office system. 
 
-### 5.2.2. PASSENGER SPACE CAPACITY
+### 5.3.2. PASSENGER SPACE CAPACITY
 
 This is the number of Objects that a Space (Vehicle) can accommodate at 100% utilization. 
 
@@ -206,11 +211,9 @@ This is the number of Objects that a Space (Vehicle) can accommodate at 100% uti
 
 This structure contains the maximum number of _each_ objects the Space can accommodate at at 100% utilization. E.g. a Space that can fit 90 adults, 120 children, 2 wheelchairs, and 4 prams, cannot fit these _at the same time_ but would have a 100% occupancy at 60 adults, 25 children, 1 wheelchair and 2 prams. 
 
-> **_SPEC QUESTION:_** **This is now resolved in text above?** *Previous question:* Is this always in number of Adults, and then any Capacity calculation will need to account for the fact that one wheel chair or pram takes up more space than one Adult? If it always in Adults, perhaps having an `adults` property would be better than having a full objectCount structure. Or is it always the max number of things? If so a priority needs to be established, because while a Space could fit 3 wheelchairs or 4 prams, it cannot fit 3 wheelchairs _and_ 4 prams. Perhaps wheelchairs are a bit of a special case, so perhaps this should be "number of wheelchair spaces and number of adults when wheelchair spaces are occupied"? 
+`occupancy` shall always be present. `seated` and `standing` are optional, and shall not be part of the structure if not known/present. 
 
-> **_SPEC QUESTION:_** Should there be separate "seated" and "standing" capacity structures? This is always (?) known, so should be no extra effort to have that, and could potentially benefit systems that want to make judgments about current occupancy levels without knowing anything about the specific space/vehicle? E.g. instead of / in addition to "capacity" also have "seatedCapacity" and "standingCapacity"? 
-
-### 5.2.3. PASSENGER SPACE
+### 5.3.3. PASSENGER SPACE
 
 The space structures is what APC count structures can be reported on. 
 
@@ -230,9 +233,7 @@ Above is a Vehicle Space with three sub-spaces with two of these sub-spaces belo
 
 The two spaces are linked by both having the "startRearSeating" entrance. 
 
-#### 5.2.3.1. PASSENGER SPACE - spaceType
-
-> **_SPEC QUESTION:_** It is possible standard spaceTypes should be in the Detailed Data Model rather than the JSON section. This comments equally applies to other enums and some other spec-text found in Data Format JSON section. 
+#### 5.3.3.1. PASSENGER SPACE - spaceType
 
 The intention with spaceType is to make data more readable, but also to allow processes that process output from the APC Aggregator to recognize a few common Space types, and generate reports (or other output) on those without understanding the specific naming of Spaces in all Vehicles. 
 
@@ -258,23 +259,22 @@ The intention with spaceType is to make data more readable, but also to allow pr
 
 `BENCH_SEAT` - A longer seat that may fit two or more PASSENGERs. 
 
-> **_SPEC QUESTION:_** More of these we should have? The standard don't require any action so relatively harmless to add more types I would think.  
+> **_SPEC QUESTION:_** More of these we should have? The standard don't _require_ any action so relatively harmless to add more types I would think.  
 
-### 5.2.4. ENTRANCE FOR PASSENGER SPACE
+### 5.3.4. ENTRANCE FOR PASSENGER SPACE
 
 The entrance list of a Space consists of ENTRANCE FOR PASSENGER SPACE objects. Each object is made up of
 
 ```json
 !include example-ENTRANCE-FOR-PASSENGER-SPACE.json
 ```
-
 - entranceId must be unique in the Vehicle
 - entranceType must be either "EXTERNAL" or "INTERNAL"
 - direction must be either "ALIGNED" or "REVERSED"
 
 "ALIGNED" is used when any associated entrance sensor has entry/exit events of the same direction. "REVERSED" is used when entry/exit events are opposite, and an entry event for the entrance (sensor) is a exit event for the Space.  If there is no associated sensor the value shall be null.
 
-### 5.2.5. Entrance Mapping
+### 5.3.5. Entrance Mapping
 
 Entrance Mapping is used when two entrances are next to each other or overlapping, and this makes two entrances work as one entrance. A typical use case would be two TRAIN ELEMENTS pared up so the entrance on the rear of the first carriage is the entrance at the front of the second. 
 
@@ -284,16 +284,16 @@ Entrance Mapping is used when two entrances are next to each other or overlappin
 
 `ALIGNED` is used when an entry/exit is the same event for both entrances. `REVERSED` is used when an entry event for one is an exit event for the other. 
 
-## 5.3. APC Counting Data
+## 5.4. APC Counting Data
 
 Counting data is the data that are actually wanted! These data items contains the information about entry/exit and occupancy of vehicles/spaces. 
 
-### 5.3.1. Time synchronization
+### 5.4.1. Time synchronization
 APC Counting Data contains timestamps, and data analysis relies on the timestamps of different Providers to be in sync. Producers of APC Counting Data shall ensure that the timestamp is based on a synchronized UTC time. Onboard this means using the onboard SNTP service according to ITxPT S02P02 specification. 
 
 > **_SPEC QUESTION:_** Perhaps not the best fit for the "Data format JSON" section. Perhaps have an "Other requirements" section between "Detailed Data Model" and "Data format JSON"? Or perhaps it is a good fit, as other formats may use other mechanisms to connect data? 
 
-### 5.3.2. Quality Factor
+### 5.4.2. Quality Factor
 
 The counting data all all have a quality factor, `qf`, which indicates the quality of the _data_. It applies to the changes since the last transmission. It has the values 
 - `HIGH` - No known problem with data.
@@ -301,11 +301,11 @@ The counting data all all have a quality factor, `qf`, which indicates the quali
 - `LOW` - Data _may_ have major differences with the actual data.
 - `ERROR` - The data is not reliable, and should not trusted. 
 
-`qf` is the quality of the _data_ and not the state of the sensor/detection. E.g. a video based system may work fine, but have low confidence in reported data because someone carried an Billy bookshelf onboard and is obscuring most of the camera field of view. 
+`qf` is the quality of the _data_ and not (necessarily) the state of the sensor/detection. E.g. a video based system may work fine, but have low confidence in reported data because someone carried an Billy bookshelf onboard and is obscuring most of the camera field of view. 
 
 > **_NOTE OAB:_** `qf` could be a good candidate for more general standardization, perhaps as a Data Dictionary standard type. 
 
-### 5.3.3. APC objectCount structure
+### 5.4.3. APC objectCount structure
 The objectCount structure is used in several structures to count objects that enters, exits or are present in vehicles.  
 
 ```json
@@ -328,7 +328,7 @@ The defined types are:
 - `wheelchairs` - TBD
 - `prams` - TBD
 - `bikes` - A bike. This includes all types of bikes, including motorbikes (when applicable). Defined subtypes: 
-  - `small` - e.g. kick bikes and children's bikes. May not be included in "count". 
+  - `small` - e.g. kick bikes and children's bikes. 
   - `standard` - a standard bike of some sort
   - `wide` - normal in length, but wider. E.g. three wheel bikes, scooter. 
   - `long` - normal in width, but longer. E.g. a tandem cycle. 
@@ -343,24 +343,23 @@ The defined types are:
   - `small` - E.g. cats and lapdogs. Does not use capacity, but may not be permitted in some Spaces. 
   - `medium` - A "normal sized" dog or similar
   - `large` - A large dog
-- `others` - Anything that does not fit into the categories, or is defeats categorization.  
+- `others` - Anything that does not fit into the categories, or could not be categorized.   
 
 > **_NOTE OAB:_** The reason I added `xs` and `small` for luggage was that while these are not useful for vehicle level occupancy, they could be used in _seat level_ occupancy where one would like to know how many seats are taken by people putting a bag or similar on them. 
 
 > **_SPEC QUESTION:_** Should we have sized-based subtypes for `others`? Like `small` - half adult sized, `medium` - adult sized, `large` - double  adult sized, `xl` - multiple adults, `xxl` - more than one square meters.
 
-> **_SPEC QUESTION:_** Should Space have some sort of 'restriction' property where it can be be specified that bikes/animals/etc are not allowed? 
+#### 5.4.3.1. Mandatory APC object types
 
-### 5.3.4. PASSENGER ENTRANCE COUNT
-
-Number of entries/exits through a specific Entrance, for a specified _period_ in time. Note that counts are cumulative since tsCountStart; to get the entries/exits for a smaller period, e.g. during a stop, the 'before-value' must be subtracted from the 'after-value'. The use of cumulative counts means that the correct entries/exits of an entrance can be calculated even if some messages are lost.
+To be ITxPT compliant `adults`, `children` and `others` shall be supported. Object types that are not supported shall be absent from the structure. An example of a minimal object count structure below:
 
 ```json
-!include example-PASSENGER-ENTRANCE-COUNT.json
+!include example-apc-object-count-minimal.json
 ```
-entered and exited are cumulative counts. Once the Vehicle/Space goes empty -> occupied -> empty, the entered and exited count should - with perfect detection - be the same.  
 
-### 5.3.5. Passenger Count Triggers
+Subtypes are not mandatory, and the subtype `composition` shall be absent when not supported. When supported, but containing only `{"count": 0}` values, `"composition": null` _may_ be used to reduce the transmission payload. 
+
+### 5.4.4. Passenger Count Triggers
 
 An updated Passenger Count (any type) is produced for a reason. As part of the updated count, the reason for produced the update (at that moment) is provided, as a hint to analysis. While a trigger value is required, other values than those defined are allowed; trigger values that are not understood should be skipped by the analysis function, while still processing the count data. 
 
@@ -387,7 +386,16 @@ By convention standardized triggers are UPPER CASE. Non-standard values should b
 
 > **_SPEC QUESTION:_** Are any of these TRIGGERS mandatory for ITxPT label? If yes, which?
 
-### 5.3.6. PASSENGER SPACE OCCUPANCY COUNT
+### 5.4.5. PASSENGER ENTRANCE COUNT
+
+Number of entries/exits through a specific Entrance, for a specified _period_ in time. Note that counts are cumulative since tsCountStart; to get the entries/exits for a smaller period, e.g. during a stop, the 'before-value' must be subtracted from the 'after-value'. The use of cumulative counts means that the correct entries/exits of an entrance can be calculated even if some messages are lost.
+
+```json
+!include example-PASSENGER-ENTRANCE-COUNT.json
+```
+entered and exited are cumulative counts. Once the Vehicle/Space goes empty -> occupied -> empty, the entered and exited count should - with perfect detection - be the same.  
+
+### 5.4.6. PASSENGER SPACE OCCUPANCY COUNT
 
 ```json
 !include example-PASSENGER-SPACE-OCCUPANCY-COUNT.json
@@ -397,18 +405,41 @@ Property "trigger" according to Passenger Count Triggers above.
 
 "timestamp" is the time the Count was produced, or if production is not real-time the timestamp of the newest input data to the production. 
 
-> **_SPEC QUESTION:_** For some methods like weight-based sensors it may be difficult to produce a valid count?
+### 5.4.7. PASSENGER SPACE OCCUPANCY RATIO
 
+```json
+!include example-PASSENGER-SPACE-OCCUPANCY-RATIO.json
+```
 
-> **_SPEC QUESTION:_** If PSOC is based on entrance sensors, then if they are registering more people in one direction than the other, then over a full day, this could mean the occupancy has little connection to reality. This standard should probably recommend that OCCUPANCY COUNT is reset when the Vehicle/Space is (presumed) empty, but should the mechanism for signaling such a reset be part of the spec? 
+Property "trigger" according to Passenger Count Triggers above. 
 
-### 5.3.7. PASSENGER SPACE ENTRANCE COUNT
+"timestamp" is the time the Count was produced, or if production is not real-time the timestamp of the newest input data to the production. 
 
-Number of entries/exits through all entrances of a space. Has a spaceId instead of a sensorId/entranceId. Apart from that identical to PASSENGER SPACE ENTRANCE COUNT
+### 5.4.8. PASSENGER SPACE ENTRANCE COUNT
+
+Number of entries/exits through all entrances of a space. Has a spaceId instead of a sensorId/entranceId. Apart from that identical to PASSENGER ENTRANCE COUNT
 
 ```json
 !include example-PASSENGER-SPACE-ENTRANCE-COUNT.json
 ```
+
+## 5.5. Passenger Space Count reset
+
+When PASSENGER SPACE OCCUPANCY COUNTs are calculated using PASSENGER ENTRANCE COUNTs any bias in detection between the directions may over time lead to large error in reported occupancy. To minimize this problem, the standard includes an interface to reset PASSENGER SPACE OCCUPANCY COUNTs and PASSENGER SPACE OCCUPANCY COUNTs to a known count. This interface may be used by _any_ function, manual or automatic, that wishes to (re)set the count to a known state. 
+
+```json
+!include example-passenger-space-count-reset.json
+```
+
+The structure includes the spaceId of the space to reset and in the `resetTo` property, the object count to reset to. If the spaceId is known the vehicleType does not need to match the type of the space. 
+
+If `"spaceId": null` then the count shall be reset of all PASSENGER SPACEs that matches vehicleType. This shall be supported for `VEHICLE` and `COMPOUND_TRAIN`. This is needed so systems requesting a reset does not need to understand the structure of PASSENGER SPACEs. 
+
+All APC Aggregators that produce PASSENGER SPACE OCCUPANCY COUNT or PASSENGER SPACE ENTRANCE COUNT shall monitor/accept reset messages. If the APC Aggregator also produces PASSENGER ENTRANCE COUNTs, e.g. as could be the case in a video based system, these should be reset at the same time. 
+
+Modules that only produce PASSENGER ENTRANCE COUNT should _not_ monitor/accept reset messages, as resetting both APC Aggregator and its input at the same time, could cause a mismatch in data. 
+
+> **_SPEC QUESTION:_** Not 100% sure "Modules that only produce PASSENGER ENTRANCE COUNT should _not_ monitor/accept reset messages" is the right choice. On the other hand it keeps these modules/Providers simple, which is probably a considerable benefit _and_ it avoids some possible race conditions between different modules/Providers getting the reset message. 
 
 # 6. Transport MQTT using JSON format
 
@@ -437,10 +468,7 @@ APC has four types of providers:
 
 `entrance_counts` - information about entry/exit for an entrance
 
-`space_entrance_counts` - information about entry/exit for a space.
-
-`occupancy_count` - information about occupancy of a space. 
-
+`space_counts` - information about entry/exit and occupancy for a space.
 
 ## 6.5. MQTT APC Topic tree 
 
@@ -454,7 +482,7 @@ If an entity publishes on multiple of the `*_counts` Providers it *may* use the 
 
 Static data is published under `apc/apc_static`. There are no rules on which entities/providers publish the static data; as long as the needed static data is available it is within spec. 
 
-The `[spaceId]`, `[sensorId-entranceId]` and `[entranceId1-enctranceId2]` part of the topics exists to separate data items of the same type and shall not be used by the clients. The Client shall use the Ids found in the the payload. Subscribes shall be to `..apc/vehicledefine/*/spacedefines/*/*`, `..apc/vehicledefine/*/sensorentrancemapping/*/*` and `..apc/vehicledefine/*/entranceentrancemapping/*/*`.
+The `[spaceId]`, `[sensorId-entranceId]` and `[entranceId1-entranceId2]` part of the topics exists to separate data items of the same type and shall not be used by the clients. The Client shall use the Ids found in the the payload. Subscribes shall be to `..apc/apc_static/+/spaces/+/*`, `..apc/apc_static/+/sensor_entrance_mapping/+/*` and `..apc/apc_static/+/entrance_entrance_mapping/+/*`.
 
 ## 6.8. `entrance_counts` Providers
 
@@ -463,14 +491,15 @@ The `entrance_counts` Provider(s) are _not_ required to be a physical sensors at
 ### 6.8.1. Inventory
 In addition to what is required by Inventory MQTT (which is TBD) the provider shall **TBD**. (But probably something about how it is configured at least.)
 
-## 6.9. `space_entrance_counts` Providers
+## 6.9. `space_counts` Providers
 
-### 6.9.1. Inventory
+### 6.9.1. reset_request
+
+The reset request can be published by anyone. It should be published on `apc/space_counts/reset_request/[spaceId]/..` if spaceId is set. If spaceId is null, it should be published on `apc/space_counts/reset_request/[vehicleType]/..`. APC Aggregators must subscribe to `apc/space_counts/reset_request/+/..`. 
+
+### 6.9.2. Inventory
 In addition to what is required by Inventory MQTT (which is TBD) the provider shall **TBD**. (But probably something about how it is configured at least.)
 
-## 6.10. `space_occupancy_counts` Providers
 
-### 6.10.1. Inventory
-In addition to what is required by Inventory MQTT (which is TBD) the provider shall **TBD**. (But probably something about how it is configured at least.)
 
 

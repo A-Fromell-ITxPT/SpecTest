@@ -1,5 +1,5 @@
 @startsalt
-scale 1.5
+scale 2
 skinparam backgroundColor white
 {
 {T
@@ -16,11 +16,17 @@ skinparam backgroundColor white
 ++ **entrance_counts**
 +++ [Provider ID]
 ++++ [sensorId] OR [entranceId] | PASSENGER ENTRANCE COUNT | False? | ?
-++ **space_entrance_counts**
+++ **space_counts**
 +++ [Provider ID]
-++++ [spaceId] | PASSENGER SPACE ENTRANCE COUNT | False? | ?
-+++ **occupancy_counts**
-++++ [spaceId] | PASSENGER SPACE OCCUPANCY COUNT | False? | ?
+++++ space_entrance_counts
++++++ [spaceId] | PASSENGER SPACE ENTRANCE COUNT | False? | ?
+++++ space_occupancy_counts
++++++ [spaceId] | PASSENGER SPACE OCCUPANCY COUNT | False? | ?
++++ space_occupancy_ratios
++++++ [spaceId] | PASSENGER SPACE OCCUPANCY RATIO | False? | ?
++++ reset_request
+++++ [spaceId] or [spaceType] | passenger space count reset | True? | ?
+
 }
 }
 @endsalt

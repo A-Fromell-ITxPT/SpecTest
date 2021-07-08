@@ -1,6 +1,5 @@
 {
     "$schema": "https://github.com/ITxPT/<something>/ENTRANCE-FOR-PASSENGER-SPACE.json",
-    // entranceId must be unique in the Vehicle
     "apiVersion": 1.0,
     "entranceId": "door2",
     "entranceType": "EXTERNAL", 

@@ -5,8 +5,7 @@
     "qf": "HIGH",
     "entered": "<objectCount>",
     "exited": "<objectCount>",
-    "trigger": "DOORCLOSE",
+    "trigger": "DOORS_CLOSED",
     "timestamp": "2021-06-09T07:33:04",
     "tsCountStart": "2021-06-09T05:42:38"
-    // Do we also want a msgSeqNbr ? 
 }

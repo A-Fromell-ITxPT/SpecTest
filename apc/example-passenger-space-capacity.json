@@ -2,5 +2,7 @@
     "$schema": "https://github.com/ITxPT/<something>/PASSENGER-SPACE-CAPACITY.json",
     "apiVersion": 1.0,
     "spaceId": "Vehicle",
-    "capacity": "<see objectCount def>"
+    "capacity": "<see objectCount def>",
+    "seated": "<see objectCount def>",
+    "standing": "<see objectCount def>"
 }

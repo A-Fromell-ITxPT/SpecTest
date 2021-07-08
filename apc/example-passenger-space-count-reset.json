@@ -1,0 +1,10 @@
+{
+    "$schema": "https://github.com/ITxPT/<something>/passenger-count-reset.json",
+    "apiVersion": 1.0,
+    "spaceId": null,
+    "spaceType": "VEHICLE",
+    "timestamp": "2021-06-09T07:33:04",
+    "resetTo": "<see objectCount def>",
+    "resetSource": "MADTVehicleOccupancyEntry",
+    "resetSourceMsg": "Driver marked vehicle as empty"
+}
