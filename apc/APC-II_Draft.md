@@ -76,6 +76,7 @@ title: S02- Onboard Architecture specification Part10 - APC-II
 | 2021-06-24      | 0.2.0   | Updates after first walk through                                                             | OAB    |
 | 2021-07-06      | 0.2.1   | Minor update after comments                                                                  | OAB    |
 | 2021-07-08      | 0.3.0   | Some update after TWG03 meeting. Topic tree rework, reset function, OCCUPANCY RATIO msg, etc | OAB    |
+| 2021-07-16      | 0.3.1   | Update of Concept list                                                                       | OAB    |
 
 <table style="width:99%;">
 <colgroup>
@@ -305,6 +306,10 @@ with information if the designated exit and entry directions of the
 PASSENGER ENTRANCE are aligned or reversed in relation to the PASSENGER
 SPACE.
 
+**ONBOARD DEVICE BASED PASSENGER COUNT** - Possible implementation of
+LOGGABLE OBJECT designed for passenger counting based on onboard
+counting device (counting the number of passenger in the VEHICLE)
+
 **PASSENGER ENTRANCE** - A physical or virtual boundary point through
 which passengers can enter or exit, e.g. a vehicle door. A PASSENGER
 ENTRANCE has a designated enter-direction and a designated
@@ -336,6 +341,10 @@ SPACE information.
 objects that are in a PASSENGER SPACE at a given time. A possible
 implementation of LOGGABLE OBJECT.
 
+**PASSENGER SPACE OCCUPANCY RATIO** - A fraction describing the current
+level of occupancy. Should be close to PASSENGER SPACE OCCUPANCY COUNT
+divided by PASSENGER SPACE CAPACITY.
+
 **TRAIN** - A VEHICLE TYPE composed of TRAIN ELEMENTs in a certain
 order, i.e. of wagons assembled together and propelled by a locomotive
 or one of the wagons.
@@ -353,12 +362,6 @@ In addition the following terminology is used in the specification.
 
 **APC Aggregator:** A component/module/process/etc that generates APC
 data based on inputs.
-
-**PASSENGER SPACE OCCUPANCY RATIO:** A fraction describing the current
-level of occupancy. Should be close to PASSENGER SPACE OCCUPANCY COUNT
-divided by PASSENGER SPACE CAPACITY.
-
-> ***NOTE OAB:*** This should probably be added to DD.
 
 # 2. APC-II Solution description
 
@@ -718,7 +721,7 @@ sub-spaces below
     "spaceType": "seating-area",
     "entrances": [
         {"entranceId": "startRearSeating", 
-            "entranceType": "INTERNAL", "direction": "ALIGED"}
+            "entranceType": "INTERNAL", "direction": "ALIGNED"}
     ],
     "isPartOfSpaces": [],
     "containsSpaces": []

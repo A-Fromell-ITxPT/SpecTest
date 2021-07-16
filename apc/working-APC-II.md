@@ -13,6 +13,7 @@ title: S02- Onboard Architecture specification Part10 - APC-II
 | 2021-06-24 | 0.2.0 | Updates after first walk through | OAB | 
 | 2021-07-06 | 0.2.1 | Minor update after comments | OAB |
 | 2021-07-08 | 0.3.0 | Some update after TWG03 meeting. Topic tree rework, reset function, OCCUPANCY RATIO msg, etc | OAB |
+| 2021-07-16 | 0.3.1 | Update of Concept list | OAB |
 
 
 !include ../copyright.md
@@ -37,10 +38,6 @@ In addition the following terminology is used in the specification.
 **APC:** Automatic Passenger Counting 
 
 **APC Aggregator:** A component/module/process/etc that generates APC data based on inputs. 
-
-**PASSENGER SPACE OCCUPANCY RATIO:** A fraction describing the current level of occupancy. Should be close to PASSENGER SPACE OCCUPANCY COUNT divided by PASSENGER SPACE CAPACITY. 
-
-> **_NOTE OAB:_** This should probably be added to DD. 
 
 # 2. APC-II Solution description
 

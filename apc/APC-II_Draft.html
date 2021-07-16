@@ -204,6 +204,12 @@
 <td>Some update after TWG03 meeting. Topic tree rework, reset function, OCCUPANCY RATIO msg, etc</td>
 <td>OAB</td>
 </tr>
+<tr class="odd">
+<td>2021-07-16</td>
+<td>0.3.1</td>
+<td>Update of Concept list</td>
+<td>OAB</td>
+</tr>
 </tbody>
 </table>
 <table style="width:99%;">
@@ -373,12 +379,14 @@ All rights reserved.</p>
 <p>The following Concepts from the ITxPT Data Dictionary are used.</p>
 <p><strong>COMPOUND TRAIN</strong> - A VEHICLE TYPE composed of a sequence of more than one vehicles of the type TRAIN.</p>
 <p><strong>ENTRANCE FOR PASSENGER SPACE</strong> - A PASSENGER ENTRANCE used as an entry- and/or exit- point to or from a certain PASSENGER SPACE along with information if the designated exit and entry directions of the PASSENGER ENTRANCE are aligned or reversed in relation to the PASSENGER SPACE.</p>
+<p><strong>ONBOARD DEVICE BASED PASSENGER COUNT</strong> - Possible implementation of LOGGABLE OBJECT designed for passenger counting based on onboard counting device (counting the number of passenger in the VEHICLE)</p>
 <p><strong>PASSENGER ENTRANCE</strong> - A physical or virtual boundary point through which passengers can enter or exit, e.g. a vehicle door. A PASSENGER ENTRANCE has a designated enter-direction and a designated exit-direction.</p>
 <p><strong>PASSENGER ENTRANCE COUNT</strong> - Number of passengers and other objects that have entered and exited through a specific PASSENGER ENTRANCE during a time span or since some implicit or explicit previous time/event. A possible implementation of LOGGABLE OBJECT.</p>
 <p><strong>PASSENGER SPACE</strong> - A passenger area within a VEHICLE. It may be limited to only a part of a VEHICLE such as a TRAIN ELEMENT, upper deck/lower deck, first class compartment or a bounded open space. A PASSENGER SPACE can be part of, overlap with, and be made up of other PASSENGER SPACEs.</p>
 <p><strong>PASSENGER SPACE CAPACITY</strong> - The number of passengers and other objects that are present in a PASSENGER SPACE when it is at 100% capacity.</p>
 <p><strong>PASSENGER SPACE ENTRANCE COUNT</strong> - Number of passengers and other objects that entered and exited a specific PASSENGER SPACE during a time span or since some implicit or explicit previous time/event. A possible implementation of LOGGABLE OBJECT. It is in essence an aggregation of relevant PASSENGER ENTRANCE COUNTs according to ENTRANCE FOR PASSENGER SPACE information.</p>
 <p><strong>PASSENGER SPACE OCCUPANCY COUNT</strong> - Number of passengers and other objects that are in a PASSENGER SPACE at a given time. A possible implementation of LOGGABLE OBJECT.</p>
+<p><strong>PASSENGER SPACE OCCUPANCY RATIO</strong> - A fraction describing the current level of occupancy. Should be close to PASSENGER SPACE OCCUPANCY COUNT divided by PASSENGER SPACE CAPACITY.</p>
 <p><strong>TRAIN</strong> - A VEHICLE TYPE composed of TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons.</p>
 <p><strong>TRAIN ELEMENT</strong> - An elementary component of a TRAIN (e.g. wagon, locomotive).</p>
 <p><strong>VEHICLE</strong> - A public transport vehicle used for carrying passengers.</p>
@@ -386,10 +394,6 @@ All rights reserved.</p>
 <p>In addition the following terminology is used in the specification.</p>
 <p><strong>APC:</strong> Automatic Passenger Counting</p>
 <p><strong>APC Aggregator:</strong> A component/module/process/etc that generates APC data based on inputs.</p>
-<p><strong>PASSENGER SPACE OCCUPANCY RATIO:</strong> A fraction describing the current level of occupancy. Should be close to PASSENGER SPACE OCCUPANCY COUNT divided by PASSENGER SPACE CAPACITY.</p>
-<blockquote>
-<p><strong><em>NOTE OAB:</em></strong> This should probably be added to DD.</p>
-</blockquote>
 <h1 id="apc-ii-solution-description">2. APC-II Solution description</h1>
 <h2 id="relation-to-itxpt-s02p07-apc-specification">2.1. Relation to ITxPT S02P07 APC Specification</h2>
 <p>The specification is broadly similar to S02P07, and in some aspects <em>very</em> similar. However it also changes a number of things: - Modified data structures to support Heavy Rail - Changed data format to JSON - Changed Transport to MQTT</p>
@@ -537,7 +541,7 @@ All rights reserved.</p>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;spaceType&quot;</span><span class="fu">:</span> <span class="st">&quot;seating-area&quot;</span><span class="fu">,</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;entrances&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span><span class="dt">&quot;entranceId&quot;</span><span class="fu">:</span> <span class="st">&quot;startRearSeating&quot;</span><span class="fu">,</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGED&quot;</span><span class="fu">}</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;entranceType&quot;</span><span class="fu">:</span> <span class="st">&quot;INTERNAL&quot;</span><span class="fu">,</span> <span class="dt">&quot;direction&quot;</span><span class="fu">:</span> <span class="st">&quot;ALIGNED&quot;</span><span class="fu">}</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;isPartOfSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;containsSpaces&quot;</span><span class="fu">:</span> <span class="ot">[]</span></span>
